@@ -60,7 +60,6 @@ elmo-hikes/
 
 ## Contributors
 - **Grace** - BCIT CST Student with a passion for video games and all kinds of puzzles. Fun fact: Does jigsaw puzzles as a pasttime.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
 
