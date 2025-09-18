@@ -60,7 +60,8 @@ elmo-hikes/
 
 ## Contributors
 - **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **Grace** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: she wears hat.
+- **Anas** BCIT CST Student, nice guy. Fun fact: He's a funny suppor of mine.
 
 ---
 
