@@ -60,6 +60,9 @@ elmo-hikes/
 
 ## Contributors
 - **Grace** - BCIT CST Student with a passion for video games and all kinds of puzzles. Fun fact: Does jigsaw puzzles as a pasttime.
+- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact. 
+- **Anas Shihab** - Fun fact: Bush supporter.
+
 
 ---
 
