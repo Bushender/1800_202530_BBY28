@@ -59,9 +59,9 @@ elmo-hikes/
 
 
 ## Contributors
-- **Grace** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: THE GOOOOOOOOOOOOOOOOOOAAAAAAAAAAAAAAAAAAAAAT.
-- **Thien** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Is former US president George W. Bush.
-- **Anas shihab** - O LORD, GIVE, SANITY 
+- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact.
+- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **test** - O LORD, GIVE, SANITY 
 
 ---
 
