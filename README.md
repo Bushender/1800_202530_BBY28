@@ -61,9 +61,6 @@ elmo-hikes/
 ## Contributors
 - **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact. 
 
-- **Anas** - BCIT CST Student. Fun fact: He is basically my loyal body guard.
-
-- **Grace** - BCIT CST Student. Fun fact: She wears a hat.
 
 ---
 
