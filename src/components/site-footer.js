@@ -23,7 +23,7 @@ class SiteFooter extends HTMLElement {
               <figcaption class="figcap">Assignments</figcaption>
             </figure>
           </a>
-          <a href="/map.html" class="text-decoration-none">
+          <a href="main.html" class="text-decoration-none">
             <figure>
               <img
                 src="images/map_icon.png"
@@ -34,7 +34,7 @@ class SiteFooter extends HTMLElement {
               <figcaption class="figcap">Map</figcaption>
             </figure>
           </a>
-          <a href="/schedule.html" class="text-decoration-none">
+          <a href="schedule.html" class="text-decoration-none">
             <figure>
               <img
                 src="images/schedule_icon.png"

@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 
-// import { auth } from "src/firebaseConfig.js";
-// import { logoutUser } from "src/authentication.js";
+import { auth } from "../firebaseConfig.js";
+import { logoutUser } from "../authentication.js";
 
 class SiteNavbar extends HTMLElement {
   constructor() {
@@ -71,20 +71,40 @@ class SiteNavbar extends HTMLElement {
                     height="60"
                   />
                   <div class="d-flex flex-column ms-2">
-                    Display Name<br />Username
+                    <span id="displayName">Display Name</span>
+                    <span id="username"></span>
                   </div>
                 </div>
               </li>
               <li><hr class="dropdown-divider" /></li>
-              <li><button class="dropdown-item" type="button">Profile</button></li>
-              <li><button class="dropdown-item" type="button">Settings</button></li>
+              <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html">Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><button class="dropdown-item" type="button">Logout</button></li>
+              <li><button id="logoutBtn" class="dropdown-item" type="button">Logout</button></li>
             </ul>
           </div>
         </nav>
       </header>
     `;
+
+    // Wire up logout button
+    const logoutBtn = this.querySelector("#logoutBtn");
+    logoutBtn?.addEventListener("click", async () => {
+      try {
+        await logoutUser();
+        console.log("User logged out successfully.");
+        window.location.href = "login.html";
+      } catch (err) {
+        console.error("Logout failed:", err);
+      }
+    });
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.querySelector("#username").textContent =
+          user.username || "Anonymous";
+      }
+    });
   }
 }
 
