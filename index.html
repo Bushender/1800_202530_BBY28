@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Campus Companion</title>
+    <meta charset="utf-8" />
 
-<head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
+    <!--Web Components-->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <site-navbar></site-navbar>
 
-    <!-- Other libraries go here -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <!-- Link to styles of your own -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <!-- Welcome message -->
+    <div class="d-flex align-items-center flex-column">
+      <div class="w-75 divColour">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome back!</h1>
+            <p class="lead text-center">
+              We're better together,
+              <br />and Campus Companions <br />is here to to just that.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</head>
+    <br />
 
-<body>
+    <!--Submit-->
+    <div class="d-flex align-items-center flex-column">
+      <div class="w-75">
+        <div class="d-flex align-items-center flex-column mt-3">
+          <button
+            onclick="window.location.href='login.html'"
+            type="submit"
+            id="loginSignupButton"
+            class="btn text-dark w-75"
+          >
+            Login/Signup
+          </button>
+        </div>
+      </div>
+    </div>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <!-- Stuff for body goes here -->
+    <br />
+    <br />
 
+    <site-footer></site-footer>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
-
-</body>
-
+    <script type="module" src="/src/app.js"></script>
+  </body>
 </html>
