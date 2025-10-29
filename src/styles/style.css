@@ -38,13 +38,13 @@ nav {
 .content-SW,
 .content-SE,
 .content-NW,
-.content-NE{
+.content-NE {
   display: none;
 }
 
 .Map {
   width: 100vw;
-  height: 69vh;
+  height: 100vh;
   position: relative;
 }
 
