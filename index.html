@@ -1,136 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>OUGH</title>
- <meta charset="utf-8"/>
-    <link rel="stylesheet" href="niko.css">
+  <head>
+    <title>Campus Companion</title>
+    <meta charset="utf-8" />
 
-<style>
-body {
-    display: grid;
-}
-nav {
-            background-color: rgba(17, 88, 11, 0);
-            color: white;
-           text-align: center;
-           float: top;
-           align-content: center;
-           align-items: center;
-           font-size: large;
-           height: fit-content;
-           width: 100%;
-           background-image: linear-gradient(to bottom, rgb(17, 88, 11), rgb(6, 43, 2));
-        }
+    <!--Web Components-->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
 
- table, tr, td{
-    width: 100%;
-    height: auto;
-    align-content: center !important; /*i dont know, i dont fucking know*/
-    align-items: center;
-    align-self: center;
-           text-align: justify; 
-          min-height: 100px;
-           
-        }
+  <body>
+    <site-navbar></site-navbar>
 
-        td {
-            padding: 10px;
-           height: fit-content;
-           width: fit-content;
-        
-        }
-#heady{
-    width: 100%;
-    align-content: center;
-    align-self: top;
-}
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-#RICHTIG{
-    float: right;
-    width: auto;
-    height: 300px;
-    background-color:  rgb(90, 163, 86);
-    display: grid;
-    padding: 1%;
-    padding-top: 8%;
-     border-radius: 8%;
-    border-style: solid;
-    border-color: rgb(90, 163, 86);
-    text-align: center;
-    padding-top: 160px;
-}
-#bastard{
-    color: white;
-    width: 100%;
-    height: 200px;
-}
+    <!-- Welcome message -->
+    <div class="d-flex align-items-center flex-column">
+      <div class="w-75 divColour">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome back!</h1>
+            <p class="lead text-center">
+              We're better together,
+              <br />and Campus Companions <br />is here to to just that.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</style>
+    <br />
 
-</head>
+    <!--Submit-->
+    <div class="d-flex align-items-center flex-column">
+      <div class="w-75">
+        <div class="d-flex align-items-center flex-column mt-3">
+          <button
+            onclick="window.location.href='login.html'"
+            type="submit"
+            id="loginSignupButton"
+            class="btn text-dark w-75"
+          >
+            Login/Signup
+          </button>
+        </div>
+      </div>
+    </div>
 
-<div id="heady">
+    <br />
+    <br />
 
-    <nav>
-        
-                 
-                 <table>
-    <tr>
-       
-        <td> <a id="home" onclick="window.open('index.html')">HOME</a></td>
-        <td>  <a id="settings" onclick="window.open('choice.html')">SETTINGS</a></td>
-        <td><a id="class" onclick="window.open('classup.html')">CLASS</a></td>
+    <site-footer></site-footer>
 
- 
-       
-    </tr>
-
-</table>
-
-
-
-       
-    </nav>
-
-</div>
-
-
-
-
-<!--
-
-EVIL FUCKING DIV
-
-
--->
-<div id="RICHTIG">
-   ENTER DETAILS:<br>
-   <form>
-    <label for="user">USERNAME</label>
-<br>
-<input type="text" id="user" name="user">
-<br><br><br>
-<label for="userp">PASSWORD</label>
-<br>
-<input type="password" id="userp" name="userp">
-<br>
-<br>
-<button type="button" onclick="window.open('login.html')">SUBMIT</button>
-
-   </form>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
+    <script type="module" src="/src/app.js"></script>
+  </body>
 </html>

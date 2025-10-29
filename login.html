@@ -1,0 +1,190 @@
+<!--
+Skeleton only has the shared footer and navbar so far
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Campus Companion</title>
+    <meta charset="utf-8" />
+
+    <!--Web Components-->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <site-navbar></site-navbar>
+
+    <!-- Login Form -->
+    <!--Welcome-->
+    <div id="loginWelcome" class="d-flex align-items-center flex-column">
+      <br />
+      <br />
+      <br />
+      <div class="w-75 divColour">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome back!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div id="loginView">
+      <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="divColour w-75 pt-4" style="height: 290px">
+          <h3 class="mb-3 text-center">Log in</h3>
+          <form
+            id="loginForm"
+            novalidate
+            class="d-flex align-items-center flex-column"
+          >
+            <!-- Email Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="email"
+                id="loginEmail"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <!-- Password Input & Forgot Password -->
+            <div class="mb-3 w-auto position-relative">
+              <input
+                type="password"
+                id="loginPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+
+              <small
+                class="position-absolute"
+                style="right: 0; bottom: -1.5rem"
+              >
+                <a href="#" id="forgotPassword">Forgot password?</a></small
+              >
+            </div>
+
+            <br />
+
+            <div
+              class="d-flex justify-content-between align-items-center mt-3 w-75 ms-2"
+            >
+              <!-- Signup Link -->
+              <span>
+                <a href="#" id="toSignup" class="ms-2">Sign up</a>
+              </span>
+
+              <!-- Login Button -->
+              <button id="loginButton" type="submit" class="btn me-2">
+                Log in
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Form -->
+    <!--Welcome-->
+    <div
+      id="signupWelcome"
+      class="d-flex align-items-center flex-column d-none"
+    >
+      <br />
+      <div class="w-75 divColour">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br />
+
+    <div id="signupView" class="d-none">
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="divColour w-75 pt-4" style="height: 360px">
+          <h3 class="mb-3 text-center">Sign Up</h3>
+          <form
+            id="signupForm"
+            novalidate
+            class="d-flex align-items-center flex-column"
+          >
+            <!--Username Input-->
+            <div class="mb-3 w-auto">
+              <input
+                type="text"
+                id="signupUsername"
+                class="form-control"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <!-- Email Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="email"
+                id="signupEmail"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <!-- Password Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="password"
+                id="signupPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <!-- Password Confirmation -->
+            <div class="w-auto">
+              <input
+                type="password"
+                id="signupConfirmPassword"
+                class="form-control"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+
+            <br />
+
+            <div class="d-flex justify-content-between align-items-center w-75">
+              <!-- Signup Link -->
+              <span>
+                <a href="#" id="toLogin" class="ms-1">Log in</a>
+              </span>
+
+              <!-- Login Button -->
+              <button id="signupButton" type="submit" class="btn me-2">
+                Sign up
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <site-footer></site-footer>
+
+    <script type="module" src="/src/app.js"></script>
+
+    <!--Authentication Scripts (ORDER MATTERS)-->
+    <script type="module" src="/src/firebaseConfig.js"></script>
+    <script type="module" src="/src/authentication.js"></script>
+    <script type="module" src="/src/loginSignup.js"></script>
+  </body>
+</html>
