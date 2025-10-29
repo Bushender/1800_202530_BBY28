@@ -59,10 +59,14 @@ elmo-hikes/
 
 
 ## Contributors
-- **Grace** - BCIT CST Student with a passion for video games and all kinds of puzzles. Fun fact: Does jigsaw puzzles as a pasttime.
-- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact. 
-- **Anas Shihab** - Fun fact: Bush supporter.
-
+- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact.
+<<<<<<< HEAD
+- **Grace** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: she wears hat.
+- **Anas** BCIT CST Student, nice guy. Fun fact: He's a funny suppor of mine.
+=======
+- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- **test** - O LORD, GIVE, SANITY 
+>>>>>>> main
 
 ---
 
