@@ -11,6 +11,9 @@ import {
   signOut,
 } from "firebase/auth";
 
+import { db } from "/src/firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+
 // -------------------------------------------------------------
 // loginUser(email, password)
 // -------------------------------------------------------------
@@ -49,8 +52,22 @@ export async function signupUser(name, email, password) {
     email,
     password
   );
-  await updateProfile(userCredential.user, { displayName: name });
-  return userCredential.user;
+  const user = userCredential.user; // Get the user object
+  await updateProfile(user, { displayName: name });
+
+  try {
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      email: email,
+      country: "Canada", // Default value
+      school: "BCIT", // Default value
+    });
+    console.log("Firestore user document created successfully!");
+  } catch (error) {
+    console.error("Error creating user document in Firestore:", error);
+  }
+
+  return user;
 }
 
 // -------------------------------------------------------------

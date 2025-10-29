@@ -99,10 +99,21 @@ function initAuthUI() {
     const name = document.querySelector("#signupUsername")?.value?.trim() ?? "";
     const email = document.querySelector("#signupEmail")?.value?.trim() ?? "";
     const password = document.querySelector("#signupPassword")?.value ?? "";
-    if (!name || !email || !password) {
-      showError("Please fill in name, email, and password.");
+    const confirmPassword =
+      document.querySelector("#signupConfirmPassword")?.value ?? "";
+
+    // basic field validation
+    if (!name || !email || !password || !confirmPassword) {
+      showError("Please fill in all fields.");
       return;
     }
+
+    // password match check
+    if (password !== confirmPassword) {
+      showError("Passwords do not match.");
+      return;
+    }
+
     setSubmitDisabled(signupForm, true);
     try {
       await signupUser(name, email, password);
