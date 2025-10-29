@@ -35,6 +35,12 @@ nav {
   border: none;
   cursor: pointer;
 }
+.content-SW,
+.content-SE,
+.content-NW,
+.content-NE{
+  display: none;
+}
 
 .Map {
   width: 100vw;
