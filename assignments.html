@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <!--
 Skeleton only has the shared footer and navbar so far
 -->
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <title>Campus Companion</title>
@@ -10,15 +11,101 @@ Skeleton only has the shared footer and navbar so far
     <!--Web Components-->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
+ <style>
+
+#gyu{
+  float: right;
+  float: bottom;
+}
+#suffer{
+  border-style: solid;
+  border-width: 4px;
+  border-color: blue;
+  padding: 30px;
+}
+
+ </style>
+ 
+ 
   </head>
 
   <body>
+   
     <!--Navbar-->
     <site-navbar></site-navbar>
+ <div id="allat">
+<div id="GYUUU"><button id="suffer" onclick="FurDerDDR()">ADD CLASS</button></div>
 
+ <script>
+      function FurDerDDR(){
+         var tsuki = document.createElement('div'); //makes silly box 
+          tsuki.style.backgroundColor = "black";
+          tsuki.style.marginLeft = "25%";
+          tsuki.style.marginBottom = "20px";
+          tsuki.style.width = "60%";
+         tsuki.style.height = "40px";
+         
+
+
+
+
+          //ADD SOME FA FORM AND APPEND TS BA INPUTS TO TS BA FORM NAAAAAAAAAAAAAAAAAAAAAAA 
+
+
+
+
+
+
+
+         var noFunAllowed = document.createElement('input'); //makes 1 input (can be read later for notif stuff)
+        noFunAllowed.type = "text";
+        noFunAllowed.name = "PLEASE";
+        noFunAllowed.id = "PLEASE";
+        noFunAllowed.placeholder = "Enter Class";
+        noFunAllowed.style.marginTop = "5px";
+        noFunAllowed.style.marginRight = "20%";
+
+
+
+        var noFunAllowed2 = document.createElement('input'); //makes 1 input (can be read later for notif stuff)
+        noFunAllowed2.type = "text";
+        noFunAllowed2.name = "PLEASE2";
+        noFunAllowed2.id = "PLEASE2";
+        noFunAllowed2.placeholder = "Enter Assignment";
+        noFunAllowed2.style.marginTop = "5px";
+
+
+   var noFunAllowed3 = document.createElement('input'); //makes 1 input (can be read later for notif stuff)
+        noFunAllowed3.type = "date";
+        noFunAllowed3.name = "PLEASE3";
+        noFunAllowed3.id = "PLEASE3";
+        noFunAllowed3.placeholder = "Enter Due Date";
+        noFunAllowed3.style.float = "right";
+        noFunAllowed3.style.marginTop = "5px";
+        
+        
+        tsuki.appendChild(noFunAllowed);      //duct tapes input to div (please dont touch)
+        tsuki.appendChild(noFunAllowed2);      //duct tapes input to div (please dont touch)
+         tsuki.appendChild(noFunAllowed3);      //duct tapes input to div (please dont touch)
+        document.getElementsByTagName('body')[0].appendChild(tsuki); //attatches the div to body so it renders
+        
+       
+
+
+      }
+
+    </script>
+
+
+</div>
     <!--Footer-->
     <site-footer></site-footer>
 
+
+
+
+
     <script type="module" src="/src/app.js"></script>
+   
   </body>
 </html>

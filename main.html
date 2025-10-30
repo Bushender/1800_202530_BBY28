@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <!--
 REMINDER THAT THIS IS ALSO THE MAP PAGE
 -->
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <title>Campus Companion</title>
@@ -21,6 +22,33 @@ REMINDER THAT THIS IS ALSO THE MAP PAGE
   <body>
     <!--Navbar-->
     <site-navbar></site-navbar>
+
+    <!-- MAP HTML -->
+    <div class="map-container">
+      <nav class="map-Nav">
+        <button class="button-SW" onclick="getElementById(gyu1);">South West ▾</button>
+        <div id="gyu1" class="content-SW">
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul>
+        </div>
+        <button class="button-SE">South East ▾</button>
+        <div class="content-SE"></div>
+        <button class="button-NW">North West ▾</button>
+        <div class="content-NW"></div>
+        <button class="button-NE">North East ▾</button>
+        <div class="content-NE"></div>
+      </nav>
+      <div class="Map">
+        <iframe
+          class="BCITMAP"
+          src="https://www.google.com/maps?q=BCIT%20Burnaby%20Campus&hl=en&z=15&output=embed"
+        >
+        </iframe>
+      </div>
+    </div>
 
     <!--Footer-->
     <site-footer></site-footer>
