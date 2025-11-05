@@ -1,7 +1,59 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
+import "./styles/style.css";
 
-import "/styles/style.css";
+const mapIframe = document.querySelector(".BCITMAP");
 
-function sayHello() {}
-// document.addEventListener('DOMContentLoaded', sayHello);
+// Sw drop down
+document.querySelector(".button-SW").addEventListener("click", function (e) {
+  e.stopPropagation();
+  const content = document.querySelector(".content-SW");
+  const isOpen = content.style.display === "block";
+  closeAllDropdowns();
+  content.style.display = isOpen ? "none" : "block";
+  mapIframe.style.pointerEvents = isOpen ? "auto" : "none";
+});
+
+// Se drop down
+document.querySelector(".button-SE").addEventListener("click", function (e) {
+  e.stopPropagation();
+  const content = document.querySelector(".content-SE");
+  const isOpen = content.style.display === "block";
+  closeAllDropdowns();
+  content.style.display = isOpen ? "none" : "block";
+  mapIframe.style.pointerEvents = isOpen ? "auto" : "none";
+});
+
+// Nw drop down
+document.querySelector(".button-NW").addEventListener("click", function (e) {
+  e.stopPropagation();
+  const content = document.querySelector(".content-NW");
+  const isOpen = content.style.display === "block";
+  closeAllDropdowns();
+  content.style.display = isOpen ? "none" : "block";
+  mapIframe.style.pointerEvents = isOpen ? "auto" : "none";
+});
+
+// Ne drop down
+document.querySelector(".button-NE").addEventListener("click", function (e) {
+  e.stopPropagation();
+  const content = document.querySelector(".content-NE");
+  const isOpen = content.style.display === "block";
+  closeAllDropdowns();
+  content.style.display = isOpen ? "none" : "block";
+  mapIframe.style.pointerEvents = isOpen ? "auto" : "none";
+});
+
+// Close all menus
+function closeAllDropdowns() {
+  document.querySelector(".content-SW").style.display = "none";
+  document.querySelector(".content-SE").style.display = "none";
+  document.querySelector(".content-NW").style.display = "none";
+  document.querySelector(".content-NE").style.display = "none";
+}
+
+// Clicking anywhere else closes menus and re-enables the map
+window.addEventListener("click", function () {
+  closeAllDropdowns();
+  mapIframe.style.pointerEvents = "auto";
+});
