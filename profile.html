@@ -7,16 +7,69 @@ Skeleton only has the shared footer and navbar so far
   <head>
     <title>Campus Companion</title>
     <meta charset="utf-8" />
-
+    <script type="module" src="/src/profile.js"></script>
     <!--Web Components-->
-    <script type="module" src="/src/components/site-navbar.js"></script>
+    <link rel="stylesheet" href="/src/styles/style.css" />
+    <!-- <script type="module" src="/src/components/site-navbar.js"></script> -->
     <script type="module" src="/src/components/site-footer.js"></script>
+
+    <style>
+      html {
+        font-size: 20px;
+      }
+    </style>
   </head>
 
   <body>
     <!--Navbar-->
-    <site-navbar></site-navbar>
+    <!-- <site-navbar></site-navbar> -->
 
+    <!-- Main stuff -->
+    <div class="profile-container">
+      <aside class="sidebar">
+        <button class="back-btn">&lt; Back</button>
+        <div class="profile-section">
+          <div class="profile-pic"></div>
+          <nav class="sidebar-nav">
+            <button class="nav-button">Account</button>
+            <button class="nav-button">Settings</button>
+            <button class="nav-button">Privacy</button>
+          </nav>
+        </div>
+      </aside>
+      <section class="profile-content">
+        <h1>Account Settings</h1>
+
+        <form class="account-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" />
+          </div>
+
+          <div class="form-group">
+            <label for="display-name">Display Name</label>
+            <input type="text" id="display-name" name="display-name" />
+          </div>
+
+          <div class="form-buttons">
+            <select id="set" name="set">
+              <option>Select</option>
+              <option>Set A</option>
+              <option>Set B</option>
+              <option>Set C</option>
+              <option>Set D</option>
+            </select>
+            <button type="button" class="edit-btn">Edit</button>
+            <button type="submit" class="save-btn">Save</button>
+          </div>
+        </form>
+      </section>
+    </div>
     <!--Footer-->
     <site-footer></site-footer>
 
