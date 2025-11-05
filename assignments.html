@@ -54,7 +54,16 @@ Skeleton only has the shared footer and navbar so far
 
  </style>
  
- 
+<script type="module"> //MODULE IMPORT DOES NOT IMPORT
+
+
+ import { db } from "/src/firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
+
+
+</script>
+
+
   </head>
 
   <body>
@@ -66,6 +75,8 @@ Skeleton only has the shared footer and navbar so far
 <div id="GYUUU"><button id="suffer" onclick="FurDerDDR()"><b>+<b></button></div>
 
  <script>
+
+
       function FurDerDDR(){
          var tsuki = document.createElement('div'); //makes silly box 
           tsuki.style.backgroundColor = "darkblue";
@@ -181,8 +192,8 @@ Skeleton only has the shared footer and navbar so far
 
          
         KillMe.appendChild(noFunAllowed3);          //The code will be formatted this way. 
-KillMe.appendChild(yumeNikki); 
-KillMe.appendChild(HeinzKlinger);
+        KillMe.appendChild(yumeNikki); 
+        KillMe.appendChild(HeinzKlinger);
         tsuki.appendChild(myBelovedMadatsuki);
 
 
@@ -203,6 +214,7 @@ KillMe.appendChild(HeinzKlinger);
 //i miss my wife
 
 function SpassJazz(Aname, Aclass, Adate){
+  
 
  //const userAssignmnet = createAssignmnet(auth, email, password);
 
@@ -211,7 +223,7 @@ function SpassJazz(Aname, Aclass, Adate){
     setDoc(doc(db, "UserAssignment", user.uid), { //setDoc undefined????
       name: user.uid,
       An: Aname,
-      Ac: Aclass,
+      Ac: Aclass, //O LORD, PLEASE, WORK
       Ad: Adate     
     });
 
@@ -219,6 +231,8 @@ function SpassJazz(Aname, Aclass, Adate){
 catch (error) {
     console.error("Error creating user document in Firestore:", error);
    }
+
+   return " ";
 
 }
 
