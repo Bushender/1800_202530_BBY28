@@ -144,7 +144,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-main.profile-container {
+div.profile-container {
   display: flex;
 }
 
@@ -173,10 +173,6 @@ main.profile-container {
   font-weight: bold;
   cursor: pointer;
   margin-bottom: 15px;
-}
-
-.back-btn:hover {
-  color: #0056b3;
 }
 
 .profile-pic {
@@ -279,10 +275,6 @@ select:focus {
 
 .edit-btn {
   background-color: white;
-}
-
-.edit-btn:hover {
-  background-color: #f1f1f1;
 }
 
 .save-btn {
