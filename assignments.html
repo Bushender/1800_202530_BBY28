@@ -13,15 +13,42 @@ Skeleton only has the shared footer and navbar so far
     <script type="module" src="/src/components/site-footer.js"></script>
  <style>
 
-#gyu{
-  float: right;
-  float: bottom;
+#GYUUU{
+    position: fixed;     
+  bottom: 100px;         
+  right: 10px; 
+  width: 200px;
+  height: 200px;
 }
 #suffer{
   border-style: solid;
   border-width: 4px;
-  border-color: blue;
-  padding: 30px;
+  border-color: yellow;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 1px;
+  padding-bottom: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: white;
+  background-color: darkblue; /*wrong blue, I know*/
+  font-size: 40px;
+  
+  
+   position: absolute;
+  top: 10px;
+  left: 10px;
+
+
+}
+
+.row{
+  display: flex;
+  
+}
+
+.column{
+  flex: 50%; /*dont ask i dont know*/
 }
 
  </style>
@@ -33,26 +60,42 @@ Skeleton only has the shared footer and navbar so far
    
     <!--Navbar-->
     <site-navbar></site-navbar>
+
  <div id="allat">
-<div id="GYUUU"><button id="suffer" onclick="FurDerDDR()">ADD CLASS</button></div>
+<div id="GYUUU"><button id="suffer" onclick="FurDerDDR()"><b>+<b></button></div>
 
  <script>
       function FurDerDDR(){
          var tsuki = document.createElement('div'); //makes silly box 
-          tsuki.style.backgroundColor = "black";
+          tsuki.style.backgroundColor = "darkblue";
           tsuki.style.marginLeft = "25%";
           tsuki.style.marginBottom = "20px";
           tsuki.style.width = "60%";
          tsuki.style.height = "40px";
-         
+         tsuki.style.border = "solid";
+         tsuki.style.borderWidth = "3px"; 
+         tsuki.style.borderColor = "yellow";
+         tsuki.style.borderRadius = "8px";
+         tsuki.style.padding = "2%";
+         tsuki.style.alignItems = "center";
+         tsuki.style.display = "flex";
+         tsuki.style.justifyContent = "space-evenly";
+         tsuki.style.marginTop = "30px";
 
 
+    var myBelovedMadatsuki = document.createElement('div'); //the row of cols
+    myBelovedMadatsuki.className = "row";
+
+    var whyCantIBeHappy = document.createElement('div'); // col one
+    whyCantIBeHappy.className = "column";
+
+    var KillMe = document.createElement('div'); //col 2
+    KillMe.className = "column";
+
+          //god is dead and i have killed him
 
 
-          //ADD SOME FA FORM AND APPEND TS BA INPUTS TO TS BA FORM NAAAAAAAAAAAAAAAAAAAAAAA 
-
-
-
+//gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu gyu 
 
 
 
@@ -61,9 +104,13 @@ Skeleton only has the shared footer and navbar so far
         noFunAllowed.type = "text";
         noFunAllowed.name = "PLEASE";
         noFunAllowed.id = "PLEASE";
-        noFunAllowed.placeholder = "Enter Class";
-        noFunAllowed.style.marginTop = "5px";
-        noFunAllowed.style.marginRight = "20%";
+        noFunAllowed.placeholder = "Enter Class"; //making the input taller makes them slide down
+     //   noFunAllowed.style.marginRight = "20%"; //not expand down, slide, the whole box moves down
+       // noFunAllowed.style.marginBottom = "20%";
+        noFunAllowed.style.height = "40px";
+        noFunAllowed.style.borderRadius = "8px";
+        noFunAllowed.style.borderWidth = "5px";
+        noFunAllowed.style.borderColor = "yellow";
 
 
 
@@ -72,7 +119,11 @@ Skeleton only has the shared footer and navbar so far
         noFunAllowed2.name = "PLEASE2";
         noFunAllowed2.id = "PLEASE2";
         noFunAllowed2.placeholder = "Enter Assignment";
-        noFunAllowed2.style.marginTop = "5px";
+         noFunAllowed2.style.height = "40px";
+         noFunAllowed2.style.borderRadius = "8px";
+         noFunAllowed2.style.borderWidth = "5px";
+        noFunAllowed2.style.borderColor = "yellow";
+        
 
 
    var noFunAllowed3 = document.createElement('input'); //makes 1 input (can be read later for notif stuff)
@@ -80,13 +131,42 @@ Skeleton only has the shared footer and navbar so far
         noFunAllowed3.name = "PLEASE3";
         noFunAllowed3.id = "PLEASE3";
         noFunAllowed3.placeholder = "Enter Due Date";
-        noFunAllowed3.style.float = "right";
-        noFunAllowed3.style.marginTop = "5px";
+        //noFunAllowed3.style.float = "bottom";
+         noFunAllowed3.style.height = "40px";
+         noFunAllowed3.style.borderRadius = "8px";
+        noFunAllowed3.style.borderWidth = "5px";
+        noFunAllowed3.style.borderColor = "yellow";
+
+        var yumeNikki = document.createElement('img');
+        yumeNikki.src = "https://th.bing.com/th/id/R.63c76d3796708a94e97fff91e07ca726?rik=gVd3cN4Xx%2f7tCg&pid=ImgRaw&r=0";
+        yumeNikki.style.height = "40px";
+        yumeNikki.style.width = "40px";
         
+
+// 
+//SO BASICALLY: nofun1 and 2 are attached to unhappy and date and image is attatched to killme 
+// with both cols attached to my beloved madatsuki and im attatched to the cealing
+// 
+// 
+
+        myBelovedMadatsuki.appendChild(whyCantIBeHappy);
+        myBelovedMadatsuki.appendChild(KillMe);
+
+
+        whyCantIBeHappy.appendChild(noFunAllowed);        //attatches everything in order
+        whyCantIBeHappy.appendChild(noFunAllowed2);
+
         
-        tsuki.appendChild(noFunAllowed);      //duct tapes input to div (please dont touch)
-        tsuki.appendChild(noFunAllowed2);      //duct tapes input to div (please dont touch)
-         tsuki.appendChild(noFunAllowed3);      //duct tapes input to div (please dont touch)
+
+         
+        KillMe.appendChild(noFunAllowed3);          //The code will be formatted this way. 
+KillMe.appendChild(yumeNikki); 
+        tsuki.appendChild(myBelovedMadatsuki);
+
+
+        // tsuki.appendChild(noFunAllowed);      //duct tapes input to div (please dont touch)
+        // tsuki.appendChild(noFunAllowed2);      //duct tapes input to div (please dont touch)
+        //  tsuki.appendChild(noFunAllowed3);      //duct tapes input to div (please dont touch)
         document.getElementsByTagName('body')[0].appendChild(tsuki); //attatches the div to body so it renders
         
        
