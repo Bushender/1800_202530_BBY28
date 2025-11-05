@@ -1,12 +1,12 @@
 html {
-  position: relative;
+  overflow-y: hidden;
   min-height: 100%;
 }
 
 nav {
   background-color: rgb(19, 43, 95);
   align-content: center;
-  height: 130px;
+  height: 11vh;
 }
 
 /* Map stuff lols */
@@ -88,16 +88,36 @@ nav {
 }
 
 #notifDrop {
-  width: 250px;
+  width: 50vw;
+  height: auto;
+  font-size: 3em;
 }
 
 #mainDrop {
-  width: 220px;
+  width: 50vw;
+  height: auto;
+  font-size: 3em;
+}
+
+#logoIcon {
+  width: 17vh;
+}
+
+#pfpIcon {
+  width: 8vh;
+}
+
+#notifIcon {
+  width: 7.5vh;
+}
+
+#dropdownPFP {
+  width: 15vw;
 }
 
 .divColour {
   background-color: rgb(184, 184, 196);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 #loginSignupButton {
@@ -105,24 +125,37 @@ nav {
 }
 
 .footer .containment {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 130px;
+  height: 11vh;
   background-color: rgb(19, 43, 95);
   display: flex;
-  justify-content: space-around; /* or space-between */
+  justify-content: space-around;
   align-items: center;
   padding-bottom: 17px;
+  padding-top: 5px;
+}
+
+.footer figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footIcon {
+  height: 7.5vh;
 }
 
 .figcap {
-  margin-top: 0; /* remove default spacing */
+  margin-top: 0;
   padding: 0;
-  line-height: 5px; /* shrink any inherited line-height */
+  line-height: 5px;
   color: white;
-  font-size: small;
+  font-size: 1.5em;
   text-align: center;
+  align-items: center;
 }
 
 #loginButton,
