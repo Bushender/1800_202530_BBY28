@@ -92,6 +92,11 @@ Skeleton only has the shared footer and navbar so far
     var KillMe = document.createElement('div'); //col 2
     KillMe.className = "column";
 
+
+        var Oppenheimer = document.createElement('form'); //slide everthing into here
+
+
+
           //god is dead and i have killed him
 
 
@@ -137,6 +142,14 @@ Skeleton only has the shared footer and navbar so far
         noFunAllowed3.style.borderWidth = "5px";
         noFunAllowed3.style.borderColor = "yellow";
 
+
+      var HeinzKlinger = document.createElement('button');
+      HeinzKlinger.type = "submit";
+      HeinzKlinger.style.height = "30px";
+      HeinzKlinger.style.width = "30px";
+      HeinzKlinger.id = "HeinzKlinger";
+      HeinzKlinger.addEventListener("click", SpassJazz);//should run function and submit 3 vals to func that needs 3 vals
+
         var yumeNikki = document.createElement('img');
         yumeNikki.src = "https://th.bing.com/th/id/R.63c76d3796708a94e97fff91e07ca726?rik=gVd3cN4Xx%2f7tCg&pid=ImgRaw&r=0";
         yumeNikki.style.height = "40px";
@@ -148,6 +161,13 @@ Skeleton only has the shared footer and navbar so far
 // with both cols attached to my beloved madatsuki and im attatched to the cealing
 // 
 // 
+
+        Oppenheimer.appendChild(noFunAllowed);
+        Oppenheimer.appendChild(noFunAllowed2);
+        Oppenheimer.appendChild(noFunAllowed3); //duct tape everything to form so button works(?)
+        Oppenheimer.appendChild(HeinzKlinger);
+
+
 
         myBelovedMadatsuki.appendChild(whyCantIBeHappy);
         myBelovedMadatsuki.appendChild(KillMe);
@@ -161,6 +181,7 @@ Skeleton only has the shared footer and navbar so far
          
         KillMe.appendChild(noFunAllowed3);          //The code will be formatted this way. 
 KillMe.appendChild(yumeNikki); 
+KillMe.appendChild(HeinzKlinger);
         tsuki.appendChild(myBelovedMadatsuki);
 
 
@@ -168,11 +189,58 @@ KillMe.appendChild(yumeNikki);
         // tsuki.appendChild(noFunAllowed2);      //duct tapes input to div (please dont touch)
         //  tsuki.appendChild(noFunAllowed3);      //duct tapes input to div (please dont touch)
         document.getElementsByTagName('body')[0].appendChild(tsuki); //attatches the div to body so it renders
+
+
+
+
         
        
+   }
 
 
-      }
+
+//i miss my wife
+
+function SpassJazz(Aname, Aclass, Adate){
+
+ //const userAssignmnet = createAssignmnet(auth, email, password);
+
+
+ try {
+    setDoc(doc(db, "UserAssignment", user.uid), { //setDoc undefined????
+      name: user.uid,
+      An: Aname,
+      Ac: Aclass,
+      Ad: Adate     
+    });
+
+}
+catch (error) {
+    console.error("Error creating user document in Firestore:", error);
+   }
+
+}
+
+
+
+
+
+// async function signupUser() {
+ 
+//   const user = userCredential.user; // Get the user object
+//   await updateProfile(user, { displayName: name });
+
+ 
+//     console.log("Firestore user document created successfully!");
+//   } 
+
+//   return user;
+
+
+
+
+
+   
 
     </script>
 
