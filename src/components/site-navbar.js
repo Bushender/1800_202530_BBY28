@@ -16,7 +16,7 @@ class SiteNavbar extends HTMLElement {
           <img
             src="images/logo_white.png"
             alt="Logo"
-            height="70"
+            id="logoIcon"
             class="ms-2 mt-4"
           />
 
@@ -31,9 +31,8 @@ class SiteNavbar extends HTMLElement {
               <img
                 src="images/bell_icon.png"
                 alt="Notifications"
+                id="notifIcon"
                 class="me-n2 mt-4"
-                width="75"
-                height="75"
               />
             </button>
             <ul id="notifDrop" class="dropdown-menu dropdown-menu-end">
@@ -56,8 +55,8 @@ class SiteNavbar extends HTMLElement {
               <img
                 src="images/user_icon.png"
                 alt="Profile"
+                id="pfpIcon"
                 class="me-2 mt-4"
-                width="80"
               />
             </button>
             <ul id="mainDrop" class="dropdown-menu dropdown-menu-end">
@@ -66,9 +65,8 @@ class SiteNavbar extends HTMLElement {
                   <img
                     src="images/user_icon.png"
                     alt="Profile"
+                    id="dropdownPFP"
                     class="ms-2"
-                    width="60"
-                    height="60"
                   />
                   <div class="d-flex flex-column ms-2">
                     <span id="displayName">Display Name</span>

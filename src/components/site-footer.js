@@ -17,8 +17,7 @@ class SiteFooter extends HTMLElement {
             <figure><img
                 src="images/assignments_icon.png"
                 alt="Assignments"
-                width="80"
-                class=""
+                class="footIcon"
               />
               <figcaption class="figcap">Assignments</figcaption>
             </figure>
@@ -28,8 +27,7 @@ class SiteFooter extends HTMLElement {
               <img
                 src="images/map_icon.png"
                 alt="Map"
-                height="80"
-                class=""
+                class="footIcon"
               />
               <figcaption class="figcap">Map</figcaption>
             </figure>
@@ -39,8 +37,7 @@ class SiteFooter extends HTMLElement {
               <img
                 src="images/schedule_icon.png"
                 alt="Schedule"
-                height="80"
-                class=""
+                class="footIcon"
               />
               <figcaption class="figcap">Schedule</figcaption>
             </figure>
