@@ -359,6 +359,7 @@ select:focus {
 .form-buttons select > option {
   font-size: 0.6rem;
 }
+
 .edit-btn,
 .save-btn {
   padding: 15px 25px;
