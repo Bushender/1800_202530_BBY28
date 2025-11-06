@@ -57,3 +57,20 @@ window.addEventListener("click", function () {
   closeAllDropdowns();
   mapIframe.style.pointerEvents = "auto";
 });
+
+// Dropdown navigation
+// Dropdown navigation for same-level pages
+function setupDropdownNavigation(selector) {
+  document.querySelectorAll(`${selector} li`).forEach((item) => {
+    item.addEventListener("click", () => {
+      const target = item.textContent.trim();
+      window.location.href = `/${target}.html`;
+    });
+  });
+}
+
+// Set up navigation for each section
+setupDropdownNavigation(".content-SW");
+setupDropdownNavigation(".content-SE");
+setupDropdownNavigation(".content-NW");
+setupDropdownNavigation(".content-NE");
