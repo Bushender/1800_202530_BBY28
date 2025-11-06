@@ -2,13 +2,18 @@
 import { auth } from "/src/firebaseConfig.js";
 import { db } from "/src/firebaseConfig.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 
+//user id is read and does exist
 
 
-
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log(user.uid); 
+ 
+    const interloper = user.uid;
 
 
 
@@ -76,6 +81,8 @@ function createAssignmentBox() {
   inputDate.style.borderColor = "yellow";
 
   // Button
+  
+
   const submitButton = document.createElement('button');
   submitButton.type = "submit";
   submitButton.style.height = "30px";
@@ -86,7 +93,7 @@ function createAssignmentBox() {
       inputAssignment.value,
       inputClass.value,
       inputDate.value,
-     // user.uid
+      interloper
     );
   });
 
@@ -113,22 +120,19 @@ function createAssignmentBox() {
 
 // Handles Firestore submission
 
-let currentUser = null;
-
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-});
 
 
 
 
-function submitAssignment(assignmentName, assignmentClass, assignmentDate) {
+
+function submitAssignment(assignmentName, assignmentClass, assignmentDate,  interloper) {
   try {
-    setDoc(doc(db, "UserAssignment", user.uid), {//
+    setDoc(doc(db, "UserAssignment", interloper), {//current user id is undefined
       name: "Heinz Klinger",
       assignmentName,
       assignmentClass,
       assignmentDate,
+     interloper
     });
   } catch (error) {
     console.error("Error creating user document in Firestore:", error);
@@ -137,11 +141,15 @@ function submitAssignment(assignmentName, assignmentClass, assignmentDate) {
   return " ";
 }
 
+
+
+
+
+
 const boxMaker = document.querySelector('#suffer');
 boxMaker; {
 boxMaker.addEventListener("click", () => {
 createAssignmentBox()
 
 
-})
-}
+})} } });
