@@ -1,5 +1,4 @@
 html {
-  overflow-y: hidden;
   min-height: 100%;
 }
 
@@ -91,10 +90,30 @@ nav {
 .divColour {
   background-color: rgb(184, 184, 196);
   border-radius: 30px;
+  height: auto;
+  text-align: center;
+  padding-bottom: 15px;
+  margin-top: 5vh;
+}
+
+#loginWelcome,
+#signupWelcome {
+  margin-top: 2.5vh;
+}
+
+.welcomeText {
+  font-size: 5vh;
+}
+
+#motto {
+  font-size: 2vh;
 }
 
 #loginSignupButton {
   background-color: rgb(124, 124, 158);
+  height: 4vh;
+  margin-top: 5vh;
+  font-size: 1.8vh;
 }
 
 .footer .containment {
@@ -131,13 +150,48 @@ nav {
   align-items: center;
 }
 
+.formTitle {
+  font-size: 4vh;
+  padding-bottom: 2vh;
+}
+
+#loginView,
+#signupView {
+  margin-top: 2.5vh;
+}
+
+#loginEmail,
+#loginPassword,
+#signupUsername,
+#signupEmail,
+#signupPassword,
+#signupConfirmPassword {
+  height: 4vh;
+  width: 40vw;
+  font-size: 1.5vh;
+  border-radius: 1vh;
+}
+
+.buttonPos {
+  padding-top: 3vh;
+  margin-bottom: 1.5vh;
+}
+
 #loginButton,
 #signupButton {
   background-color: rgb(82, 107, 163);
   color: white;
+  height: 4vh;
+  width: 17vw;
+  font-size: 1.6vh;
+  border-radius: 10px;
+}
+
+#forgotPassword {
+  font-size: 1.7vh;
 }
 
 #toSignup,
 #toLogin {
-  font-size: 12pt;
+  font-size: 2vh;
 }

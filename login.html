@@ -20,25 +20,22 @@ Skeleton only has the shared footer and navbar so far
     <!-- Login Form -->
     <!--Welcome-->
     <div id="loginWelcome" class="d-flex align-items-center flex-column">
-      <br />
-      <br />
-      <br />
       <div class="w-75 divColour">
         <div class="d-flex align-items-center flex-column">
           <div class="jumbotron w-auto">
-            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome back!</h1>
+            <h1 class="display-4 mt-4 mb-4 fw-bold welcomeText">
+              Welcome back!
+            </h1>
           </div>
         </div>
       </div>
     </div>
 
-    <br />
-
     <div id="loginView">
       <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
       <div class="d-flex align-items-center justify-content-center">
-        <div class="divColour w-75 pt-4" style="height: 290px">
-          <h3 class="mb-3 text-center">Log in</h3>
+        <div class="divColour w-75 pt-4 formSize">
+          <h3 class="mb-3 text-center formTitle">Log in</h3>
           <form
             id="loginForm"
             novalidate
@@ -64,18 +61,13 @@ Skeleton only has the shared footer and navbar so far
                 required
               />
 
-              <small
-                class="position-absolute"
-                style="right: 0; bottom: -1.5rem"
-              >
-                <a href="#" id="forgotPassword">Forgot password?</a></small
+              <span class="position-absolute" style="right: 0">
+                <a href="#" id="forgotPassword">Forgot password?</a></span
               >
             </div>
 
-            <br />
-
             <div
-              class="d-flex justify-content-between align-items-center mt-3 w-75 ms-2"
+              class="d-flex justify-content-between align-items-center mt-3 w-75 ms-2 buttonPos"
             >
               <!-- Signup Link -->
               <span>
@@ -98,22 +90,19 @@ Skeleton only has the shared footer and navbar so far
       id="signupWelcome"
       class="d-flex align-items-center flex-column d-none"
     >
-      <br />
-      <div class="w-75 divColour">
+      <div class="w-75 divColour formSize">
         <div class="d-flex align-items-center flex-column">
           <div class="jumbotron w-auto">
-            <h1 class="display-4 mt-4 mb-4 fw-bold">Welcome!</h1>
+            <h1 class="display-4 mt-4 mb-4 fw-bold welcomeText">Welcome!</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <br />
-
     <div id="signupView" class="d-none">
       <div class="d-flex align-items-center justify-content-center">
-        <div class="divColour w-75 pt-4" style="height: 360px">
-          <h3 class="mb-3 text-center">Sign Up</h3>
+        <div class="divColour w-75 pt-4">
+          <h3 class="mb-3 text-center formTitle">Sign Up</h3>
           <form
             id="signupForm"
             novalidate
@@ -160,9 +149,9 @@ Skeleton only has the shared footer and navbar so far
               />
             </div>
 
-            <br />
-
-            <div class="d-flex justify-content-between align-items-center w-75">
+            <div
+              class="d-flex justify-content-between align-items-center w-75 buttonPos"
+            >
               <!-- Signup Link -->
               <span>
                 <a href="#" id="toLogin" class="ms-1">Log in</a>
