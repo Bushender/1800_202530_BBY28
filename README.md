@@ -1,4 +1,4 @@
-# Elmo Hikes
+# Campus Companions
 
 
 ## Overview
