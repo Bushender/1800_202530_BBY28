@@ -2,18 +2,19 @@
 
 
 ## Overview
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Campus Companions is a client-side JavaScript web application that helps users explore the BCIT campus and helps track assignments via your set. The app displays an interactable map of campus where you can click to view specific buildings and their floor plans, as well as a tab where you add, edit, or delete assignments, and a schedule tab that functions similarly. Users can edit their profile to change their username and display name, as well as assign a set for their account to make use of the assignment feature.
 
-Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
+Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing set assignments for users.
 
 ---
 
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
+- Add, edit, and delete shared assignments with your set
+- Add to your schedule for notifications
+- Edit your profile details
+- Interact with the campus map of buildings and their floormaps
 - Responsive design for desktop and mobile
 
 ---
@@ -33,9 +34,11 @@ Example:
 ## Usage
 
 1. Open your browser and visit `http://localhost:3000`.
-2. Browse the list of hiking trails displayed on the main page.
-3. Click the heart icon (or similar) to mark a trail as a favorite.
-4. View your favorite hikes in the favorites section.
+2. Log in or create an account. 
+3. Navigate campus and its buildings via the main Map tab.
+4. Open the profile page to edit your username and set a display name or assign your profile a set.
+5. View and add/edit assignments that are shared throughout your set.
+6. Recieve notifications when an assignment is close to a due date.
 
 ---
 
@@ -43,7 +46,7 @@ Example:
 ## Project Structure
 
 ```
-elmo-hikes/
+1800_202530_BBY28/
 ├── src/
 │   ├── main.js
 ├── styles/
@@ -63,9 +66,6 @@ elmo-hikes/
 <<<<<<< HEAD
 - **Grace** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: she wears hat.
 - **Anas** BCIT CST Student, nice guy. Fun fact: He's a funny suppor of mine.
-=======
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
-- **test** - O LORD, GIVE, SANITY 
 >>>>>>> main
 
 ---
