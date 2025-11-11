@@ -16,7 +16,7 @@ Skeleton only has the shared footer and navbar so far
   <body>
     <!--Navbar-->
     <site-navbar></site-navbar>
-
+    <div id="overlay"></div>
     <h1 id="assignmentTitle">Assignments</h1>
 
     <div id="buttonPos">
@@ -25,16 +25,21 @@ Skeleton only has the shared footer and navbar so far
 
     <div id="assignmentForm">
       <label for="className">Class Name:</label>
-      <input type="text" id="className" />
+      <input type="text" id="className" placeholder=" Untitled Class" />
 
       <label for="assignmentName">Assignment Name:</label>
-      <input type="text" id="assignmentName" />
+      <input
+        type="text"
+        id="assignmentName"
+        placeholder=" Untitled Assignment"
+      />
 
       <label for="dueDate">Due Date:</label>
-      <input type="text" id="dueDate" />
-
-      <button id="doneBtn" type="button">Done</button>
-      <button id="cancelBtn" type="button">Cancel</button>
+      <input type="text" id="dueDate" placeholder=" YYYY-MM-DD" />
+      <div id="posBtns">
+        <button id="createBtn" type="button">Create</button>
+        <button id="cancelBtn" type="button">Cancel</button>
+      </div>
     </div>
 
     <!--Footer-->

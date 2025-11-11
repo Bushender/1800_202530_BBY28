@@ -379,6 +379,17 @@ select:focus {
 }
 
 /* Assignment css */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
 #assignmentTitle {
   font-size: 5em;
   margin-top: 50px;
@@ -394,7 +405,7 @@ select:focus {
   right: 30px;
   align-items: center;
   pointer-events: auto;
-  z-index: 5;
+  z-index: 2;
 }
 
 #addButton {
@@ -412,7 +423,7 @@ select:focus {
   color: rgb(226, 221, 221);
   background-color: rgb(26, 55, 119);
   transition: background-color 0.1s ease, transform 0.1s ease;
-  z-index: 6;
+  z-index: 3;
 }
 
 #addButton:hover {
@@ -420,4 +431,42 @@ select:focus {
   transform: scale(1.1);
 }
 
-/* 980 x 2120*/
+#assignmentForm {
+  display: none;
+  position: fixed;
+  height: auto;
+  flex-direction: column;
+  font-size: 2.2vh;
+  padding: 5%;
+  top: 45%;
+  left: 50%;
+  width: 60vw;
+  border-radius: 1.5vh;
+  transform: translate(-50%, -50%);
+  overflow-wrap: break-word;
+  background-color: white;
+  z-index: 5;
+}
+
+#posBtns {
+  flex-direction: row;
+  text-align: right;
+}
+
+#className,
+#assignmentName,
+#dueDate {
+  font-size: 0.9em;
+  border: none;
+  background-color: rgb(218, 218, 218);
+  margin-bottom: 1.5vh;
+}
+
+#createBtn,
+#cancelBtn {
+  border: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #4957a5;
+  background-color: white;
+}
