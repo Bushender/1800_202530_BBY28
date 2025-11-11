@@ -80,7 +80,7 @@ nav {
   z-index: -1;
 }
 
-/* Seperate this from other stuff */
+/* Login/Signup, landing page, dropdown menus */
 
 .dropdown-menu {
   background-color: rgb(198, 204, 211);
@@ -222,8 +222,6 @@ nav {
 #toLogin {
   font-size: 2vh;
 }
-
-/*Anas css for assignement*/
 
 /*profile page css*/
 
@@ -379,3 +377,47 @@ select:focus {
   color: white;
   border: none;
 }
+
+/* Assignment css */
+#assignmentTitle {
+  font-size: 5em;
+  margin-top: 50px;
+  margin-left: 70px;
+}
+
+#buttonPos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 13vh;
+  right: 30px;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+#addButton {
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 50%;
+  font-size: 100pt;
+  line-height: 1;
+  border: 5px solid black;
+  color: rgb(226, 221, 221);
+  background-color: rgb(26, 55, 119);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+  z-index: 6;
+}
+
+#addButton:hover {
+  background-color: rgb(16, 34, 77);
+  transform: scale(1.1);
+}
+
+/* 980 x 2120*/
