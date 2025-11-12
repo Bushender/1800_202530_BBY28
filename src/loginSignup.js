@@ -7,10 +7,8 @@ import { loginUser, signupUser, authErrorMessage } from "./authentication.js";
 
 // --- Login and Signup Page ---
 // Handles toggling between Login/Signup views and form submits
-// using plain DOM APIs for simplicity and maintainability.
 
 function initAuthUI() {
-  // --- DOM Elements ---
   const alertEl = document.getElementById("authAlert");
   const loginView = document.getElementById("loginView");
   const signupView = document.getElementById("signupView");
@@ -20,7 +18,6 @@ function initAuthUI() {
   const signupForm = document.getElementById("signupForm");
   const redirectUrl = "main.html";
 
-  // --- Helper Functions ---
   // Toggle element visibility
   function setVisible(el, visible) {
     el.classList.toggle("d-none", !visible);

@@ -1,6 +1,3 @@
-import { onAuthStateChanged } from "firebase/auth";
-
-import { auth } from "../firebaseConfig.js";
 import { logoutUser } from "../authentication.js";
 
 class SiteNavbar extends HTMLElement {
@@ -94,13 +91,6 @@ class SiteNavbar extends HTMLElement {
         window.location.href = "login.html";
       } catch (err) {
         console.error("Logout failed:", err);
-      }
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        this.querySelector("#username").textContent =
-          user.username || "Anonymous";
       }
     });
   }

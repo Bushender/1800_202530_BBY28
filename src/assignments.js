@@ -1,155 +1,96 @@
-//database imports
-import { auth } from "/src/firebaseConfig.js";
 import { db } from "/src/firebaseConfig.js";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  addDoc,
+  setDoc,
+  query,
+  where,
+} from "firebase/firestore";
 
-
-
-//user id is read and does exist
-
-
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(getAuth(), (user) => {
   if (user) {
-    console.log(user.uid); 
- 
-    const interloper = user.uid;
+    // user is signed in
+    loadAssignments(user);
+  } else {
+    // user is not signed in
+    console.log("No user logged in");
+  }
+});
 
+const add = document.getElementById("addButton");
+const assignmentForm = document.getElementById("assignmentForm");
+const create = document.getElementById("createBtn");
+const cancel = document.getElementById("cancelBtn");
+const overlay = document.getElementById("overlay");
 
+function closeForm() {
+  assignmentForm.style.display = "none";
+  overlay.style.display = "none";
+}
 
+add.addEventListener("click", () => {
+  assignmentForm.style.display = "flex";
+  overlay.style.display = "block";
+});
 
-function createAssignmentBox() {
-  // Outer container box
-  const container = document.createElement('div');
-  container.style.backgroundColor = "darkblue";
-  container.style.marginLeft = "25%";
-  container.style.marginBottom = "20px";
-  container.style.width = "60%";
-  container.style.height = "40px";
-  container.style.border = "3px solid yellow";
-  container.style.borderRadius = "8px";
-  container.style.padding = "2%";
-  container.style.alignItems = "center";
-  container.style.display = "flex";
-  container.style.justifyContent = "space-evenly";
-  container.style.marginTop = "30px";
+create.addEventListener("click", async () => {
+  const user = getAuth().currentUser;
 
+  const className = document.getElementById("className").value;
+  const name = document.getElementById("assignmentName").value;
+  const dueDate = document.getElementById("dueDate").value;
 
-  // Row wrapper
-  const row = document.createElement('div');
-  row.className = "row";
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+  const set = userSnap.data().set;
 
-  // Columns
-  const leftColumn = document.createElement('div');
-  leftColumn.className = "column";
-
-  const rightColumn = document.createElement('div');
-  rightColumn.className = "column";
-
-  // Form
-  const form = document.createElement('form');
-
-  // Inputs
-  const inputClass = document.createElement('input');
-  inputClass.type = "text";
-  inputClass.name = "class";
-  inputClass.id = "classInput";
-  inputClass.placeholder = "Enter Class";
-  inputClass.style.height = "40px";
-  inputClass.style.borderRadius = "8px";
-  inputClass.style.borderWidth = "5px";
-  inputClass.style.borderColor = "yellow";
-
-  const inputAssignment = document.createElement('input');
-  inputAssignment.type = "text";
-  inputAssignment.name = "assignment";
-  inputAssignment.id = "assignmentInput";
-  inputAssignment.placeholder = "Enter Assignment";
-  inputAssignment.style.height = "40px";
-  inputAssignment.style.borderRadius = "8px";
-  inputAssignment.style.borderWidth = "5px";
-  inputAssignment.style.borderColor = "yellow";
-
-  const inputDate = document.createElement('input');
-  inputDate.type = "date";
-  inputDate.name = "dueDate";
-  inputDate.id = "dateInput";
-  inputDate.placeholder = "Enter Due Date";
-  inputDate.style.height = "40px";
-  inputDate.style.borderRadius = "8px";
-  inputDate.style.borderWidth = "5px";
-  inputDate.style.borderColor = "yellow";
-
-  // Button
-  
-
-  const submitButton = document.createElement('button');
-  submitButton.type = "submit";
-  submitButton.style.height = "30px";
-  submitButton.style.width = "30px";
-  submitButton.id = "submitAssignment";
-  submitButton.addEventListener("click", () => {
-    submitAssignment(
-      inputAssignment.value,
-      inputClass.value,
-      inputDate.value,
-      interloper
-    );
+  await addDoc(collection(db, "assignments"), {
+    className,
+    name,
+    dueDate,
+    set,
   });
 
-  // Image (icon)
-  const icon = document.createElement('img');
-  icon.src = "https://th.bing.com/th/id/R.63c76d3796708a94e97fff91e07ca726?rik=gVd3cN4Xx%2f7tCg&pid=ImgRaw&r=0";
-  icon.style.height = "40px";
-  icon.style.width = "40px";
+  closeForm();
+  loadAssignments(user);
+});
 
-  // Build the structure
-  leftColumn.appendChild(inputClass);
-  leftColumn.appendChild(inputAssignment);
+async function loadAssignments(user) {
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+  const set = userSnap.data().set;
 
-  rightColumn.appendChild(inputDate);
-  rightColumn.appendChild(icon);
-  rightColumn.appendChild(submitButton);
+  const container = document.getElementById("assignmentContainer");
+  container.innerHTML = "";
 
-  row.appendChild(leftColumn);
-  row.appendChild(rightColumn);
+  // finds and gets the assignments with the same set as the user
+  const q = query(collection(db, "assignments"), where("set", "==", set));
+  const setAssignments = await getDocs(q);
 
-  container.appendChild(row);
-  document.body.appendChild(container);
+  setAssignments.forEach((assignment) => {
+    const data = assignment.data();
+    const newAssignment = document.createElement("div");
+    newAssignment.classList.add("assignmentItem");
+    newAssignment.innerHTML = `
+    <div class="top">${data.className}
+      <button class="menu" type="button">
+        <img src="images/dots.png" alt="menu" class="dots">
+      </button>
+    </div>
+    <div class="bottom">${data.name}
+    <span>Due: ${data.dueDate}</span>
+    </div>
+    `;
+    container.appendChild(newAssignment);
+  });
 }
 
-// Handles Firestore submission
+cancel.addEventListener("click", closeForm);
 
-
-
-
-
-
-function submitAssignment(assignmentName, assignmentClass, assignmentDate,  interloper) {
-  try {
-    setDoc(doc(db, "UserAssignment", interloper), {//current user id is undefined
-      name: "Heinz Klinger",
-      assignmentName,
-      assignmentClass,
-      assignmentDate,
-     interloper
-    });
-  } catch (error) {
-    console.error("Error creating user document in Firestore:", error);
-  }
-
-  return " ";
-}
-
-
-
-
-
-
-const boxMaker = document.querySelector('#suffer');
-boxMaker; {
-boxMaker.addEventListener("click", () => {
-createAssignmentBox()
-
-
-})} } });
+// menubar.addEventListener("click", () => {
+//   //
+// });

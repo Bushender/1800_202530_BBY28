@@ -1,5 +1,6 @@
 html {
   min-height: 100%;
+  margin: 0;
 }
 
 nav {
@@ -80,7 +81,7 @@ nav {
   z-index: -1;
 }
 
-/* Seperate this from other stuff */
+/* Login/Signup, landing page, dropdown menus */
 
 .dropdown-menu {
   background-color: rgb(198, 204, 211);
@@ -222,8 +223,6 @@ nav {
 #toLogin {
   font-size: 2vh;
 }
-
-/*Anas css for assignement*/
 
 /*profile page css*/
 
@@ -378,4 +377,147 @@ select:focus {
   background-color: #007bff;
   color: white;
   border: none;
+}
+
+/* Assignment css */
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 4;
+}
+
+#assignmentTitle {
+  font-size: 5em;
+  margin-top: 50px;
+  margin-left: 70px;
+  margin-bottom: 60px;
+}
+
+#buttonPos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 13vh;
+  right: 30px;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+#addButton {
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 50%;
+  font-size: 100pt;
+  line-height: 1;
+  border: 5px solid black;
+  color: rgb(226, 221, 221);
+  background-color: rgb(26, 55, 119);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+  z-index: 3;
+}
+
+#addButton:hover {
+  background-color: rgb(16, 34, 77);
+  transform: scale(1.1);
+}
+
+#assignmentForm {
+  display: none;
+  position: fixed;
+  height: auto;
+  flex-direction: column;
+  font-size: 2.2vh;
+  padding: 5%;
+  top: 45%;
+  left: 50%;
+  width: 60vw;
+  border-radius: 1.5vh;
+  transform: translate(-50%, -50%);
+  overflow-wrap: break-word;
+  background-color: white;
+  z-index: 5;
+}
+
+#posBtns {
+  flex-direction: row;
+  text-align: right;
+}
+
+#className,
+#assignmentName,
+#dueDate {
+  font-size: 0.9em;
+  border: none;
+  background-color: rgb(218, 218, 218);
+  margin-bottom: 1.5vh;
+}
+
+#createBtn,
+#cancelBtn {
+  border: none;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #4957a5;
+  background-color: white;
+}
+
+/* Assignment fields */
+#pageWrapper {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.assignmentItem {
+  position: relative;
+  margin-bottom: 50px;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-size: 3em;
+  background-color: rgb(190, 190, 190);
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: #333 solid 3px;
+  border-radius: 15px;
+  height: 25vw;
+}
+
+.menu {
+  display: flex;
+  float: right;
+  border-radius: 100%;
+  border: none;
+  background-color: rgb(190, 190, 190);
+  margin: 0px;
+  padding: 0px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dots {
+  width: 80px;
+  height: 80px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6vw;
+  font-size: 0.9em;
 }
