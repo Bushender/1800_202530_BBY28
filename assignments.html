@@ -16,7 +16,9 @@ Skeleton only has the shared footer and navbar so far
   <body>
     <!--Navbar-->
     <site-navbar></site-navbar>
+
     <div id="overlay"></div>
+
     <!-- Container holding all the created assignments-->
     <div id="pageWrapper">
       <h1 id="assignmentTitle">Assignments</h1>
@@ -27,6 +29,7 @@ Skeleton only has the shared footer and navbar so far
     <div id="buttonPos">
       <button id="addButton" type="button">+</button>
     </div>
+
     <!-- Assignment Creation Form -->
     <div id="assignmentForm">
       <label for="className">Class Name:</label>
@@ -41,9 +44,30 @@ Skeleton only has the shared footer and navbar so far
 
       <label for="dueDate">Due Date:</label>
       <input type="text" id="dueDate" placeholder=" YYYY-MM-DD" />
-      <div id="posBtns">
+      <div class="posBtns">
         <button id="createBtn" type="button">Create</button>
         <button id="cancelBtn" type="button">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Assignment Edit Form -->
+    <div id="editForm">
+      <label for="classEdit">Class Name:</label>
+      <input type="text" id="classEdit" placeholder=" Untitled Class" />
+
+      <label for="assignmentEdit">Assignment Name:</label>
+      <input
+        type="text"
+        id="assignmentEdit"
+        placeholder=" Untitled Assignment"
+      />
+
+      <label for="dateEdit">Due Date:</label>
+      <input type="text" id="dateEdit" placeholder=" YYYY-MM-DD" />
+
+      <div class="posBtns">
+        <button id="saveBtn" type="button">Save</button>
+        <button id="cancelEditBtn" type="button">Cancel</button>
       </div>
     </div>
 
