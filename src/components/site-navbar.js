@@ -1,4 +1,6 @@
-import { logoutUser } from "../authentication.js";
+import { logoutUser, onAuthReady } from "../authentication.js";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig.js";
 
 class SiteNavbar extends HTMLElement {
   constructor() {
@@ -91,6 +93,24 @@ class SiteNavbar extends HTMLElement {
         window.location.href = "login.html";
       } catch (err) {
         console.error("Logout failed:", err);
+      }
+    });
+
+    const nameElement = this.querySelector("#username");
+    const displayNameElement = this.querySelector("#displayName");
+
+    onAuthReady(async (user) => {
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+      const name = userDoc.exists()
+        ? userDoc.data().name
+        : user.name || "anonymous";
+      const displayName = userDoc.exists()
+        ? userDoc.data().displayName
+        : user.displayName || "anonymous";
+
+      if (nameElement) {
+        nameElement.textContent = `${name}`;
+        displayNameElement.textContent = `${displayName}`;
       }
     });
   }
