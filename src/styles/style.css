@@ -483,6 +483,7 @@ select:focus {
 
 /* Assignment fields */
 #pageWrapper {
+  height: 78vh;
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -493,7 +494,7 @@ select:focus {
   margin-left: 70px;
   margin-right: 70px;
   font-size: 3em;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(174, 173, 185);
   padding: 15px;
   padding-left: 30px;
   padding-right: 30px;
@@ -507,7 +508,7 @@ select:focus {
   float: right;
   border-radius: 100%;
   border: none;
-  background-color: rgb(190, 190, 190);
+  background-color: rgb(174, 173, 185);
   margin: 0px;
   padding: 0px;
 }
@@ -533,19 +534,26 @@ select:focus {
 .detailsDropdown {
   display: none;
   top: 90px; /* right below the .top button */
-  right: -4px; /* align to the right edge of the button */
+  right: 27px; /* align to the right edge of the button */
   z-index: 20;
   width: auto;
   background-color: rgb(255, 255, 255);
   flex-direction: column;
   border: 3px solid black;
+  padding: 0;
 }
 
 .detailsDropdown button {
-  font-size: 4em;
+  display: block;
+  font-size: 3em;
   background-color: white;
   padding: 0 20px 0 20px;
+  margin: none;
   border: none;
   text-align: left;
   text-align: center;
+}
+
+.detailsDropdown button:hover {
+  background-color: #cecfdd;
 }

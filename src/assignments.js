@@ -136,11 +136,13 @@ container.addEventListener("click", async (e) => {
 
   if (target.closest(".deleteBtn")) {
     await deleteDoc(doc(db, "assignments", assignmentID));
+    dropdown.style.display = "none";
     loadAssignments(getAuth().currentUser);
     return;
   }
 
   if (target.closest(".editBtn")) {
+    dropdown.style.display = "none";
     const className = document.getElementById("classEdit");
     const name = document.getElementById("assignmentEdit");
     const dueDate = document.getElementById("dateEdit");
