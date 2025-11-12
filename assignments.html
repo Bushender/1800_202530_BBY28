@@ -17,12 +17,17 @@ Skeleton only has the shared footer and navbar so far
     <!--Navbar-->
     <site-navbar></site-navbar>
     <div id="overlay"></div>
-    <h1 id="assignmentTitle">Assignments</h1>
+    <!-- Container holding all the created assignments-->
+    <div id="pageWrapper">
+      <h1 id="assignmentTitle">Assignments</h1>
+      <div id="assignmentContainer"></div>
+    </div>
 
+    <!-- The + Button -->
     <div id="buttonPos">
       <button id="addButton" type="button">+</button>
     </div>
-
+    <!-- Assignment Creation Form -->
     <div id="assignmentForm">
       <label for="className">Class Name:</label>
       <input type="text" id="className" placeholder=" Untitled Class" />

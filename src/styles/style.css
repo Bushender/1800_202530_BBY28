@@ -1,5 +1,6 @@
 html {
   min-height: 100%;
+  margin: 0;
 }
 
 nav {
@@ -394,6 +395,7 @@ select:focus {
   font-size: 5em;
   margin-top: 50px;
   margin-left: 70px;
+  margin-bottom: 60px;
 }
 
 #buttonPos {
@@ -469,4 +471,53 @@ select:focus {
   font-weight: bold;
   color: #4957a5;
   background-color: white;
+}
+
+/* Assignment fields */
+#pageWrapper {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.assignmentItem {
+  position: relative;
+  margin-bottom: 50px;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-size: 3em;
+  background-color: rgb(190, 190, 190);
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: #333 solid 3px;
+  border-radius: 15px;
+  height: 25vw;
+}
+
+.menu {
+  display: flex;
+  float: right;
+  border-radius: 100%;
+  border: none;
+  background-color: rgb(190, 190, 190);
+  margin: 0px;
+  padding: 0px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dots {
+  width: 80px;
+  height: 80px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6vw;
+  font-size: 0.9em;
 }
