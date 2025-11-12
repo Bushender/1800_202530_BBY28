@@ -12,6 +12,28 @@ if (backButton) {
   });
 }
 
+const profilePic = document.querySelector(".profile-pic");
+const profilePicInput = document.getElementById("profile-pic-input");
+
+if (profilePic && profilePicInput) {
+  profilePic.addEventListener("click", () => {
+    profilePicInput.click();
+  });
+
+  file.input.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profilePic.style.backgroundImage = `url(${e.target.result})`;
+        profilePic.style.backgroundSize = "cover";
+        profilePic.style.backgroundPosition = "center";
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
 const navButtons = document.querySelectorAll(".nav-button");
 const editBtn = document.querySelector(".edit-btn");
 const saveBtn = document.querySelector(".save-btn");

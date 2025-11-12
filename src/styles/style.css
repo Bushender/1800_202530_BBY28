@@ -271,11 +271,23 @@ div.profile-container {
 }
 
 .profile-pic {
+  position: relative;
   width: 150px;
   height: 150px;
-  background-color: #d9d9d9;
+  background-color: grey;
   border-radius: 50%;
   margin-bottom: 20px;
+}
+
+.camera-icon img {
+  margin-top: 60%;
+  margin-left: 70%;
+  width: 35%;
+  height: 35%;
+  object-fit: contain;
+  opacity: 0.9;
+  border: #222 solid 3px;
+  border-radius: 50%;
 }
 
 .nav-button {
@@ -378,6 +390,7 @@ select:focus {
   color: white;
   border: none;
 }
+/* Seperate from others this is still profile page css */
 
 /* Assignment css */
 #overlay {
