@@ -12,6 +12,7 @@ if (backButton) {
   });
 }
 
+// Profile change this thing takes user file for the picture
 const profilePic = document.querySelector(".profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
 
@@ -20,7 +21,7 @@ if (profilePic && profilePicInput) {
     profilePicInput.click();
   });
 
-  file.input.addEventListener("change", (event) => {
+  profilePicInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -129,3 +130,43 @@ async function saveUserInfo() {
 }
 
 populateUserInfo();
+
+// // Profile change this thing takes user file for the picture
+// const profilePic = document.querySelector(".profile-pic");
+// const profilePicInput = document.getElementById("profile-pic-input");
+
+// if (profilePic && profilePicInput) {
+//   profilePic.addEventListener("click", () => {
+//     profilePicInput.click();
+//   });
+
+//   profilePicInput.addEventListener("change", async (event) => {
+//     const file = event.target.files[0];
+//     if (!file) return;
+
+//     const user = auth.currentUser;
+//     if (!user) {
+//       console.error("No user signed in. Cannot upload image.");
+//       return;
+//     }
+
+//     try {
+//       const storageRef = ref(storage, `profilePictures/${user.uid}`);
+
+//       await uploadBytes(storageRef, file);
+
+//       const downloadURL = await getDownloadURL(storageRef);
+
+//       profilePic.style.backgroundImage = `url(${downloadURL})`;
+//       profilePic.style.backgroundSize = "cover";
+//       profilePic.style.backgroundPosition = "center";
+
+//       const userRef = doc(db, "users", user.uid);
+//       await setDoc(userRef, { photoURL: downloadURL }, { merge: true });
+
+//       console.log("Profile picture uploaded and saved:", downloadURL);
+//     } catch (error) {
+//       console.error("Error uploading profile picture:", error);
+//     }
+//   });
+// }
