@@ -297,9 +297,12 @@ body {
   font-family: Arial, sans-serif;
 }
 
-div.profile-container {
+.profile-container {
   display: flex;
-  margin-top: 25px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15vh;
 }
 
 .sidebar {
@@ -310,14 +313,14 @@ div.profile-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-.sidebar-nav {
+.profile-nav {
   width: 105%;
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background-color: white !important;
+  max-height: 100px;
+  background-color: white;
 }
 
 .profile-section {
@@ -334,16 +337,17 @@ div.profile-container {
   font-size: 3rem;
   font-weight: bold;
   cursor: pointer;
-  margin-bottom: 15px;
+  margin-top: 40px;
+  margin-left: 5vw;
 }
 
 .profile-pic {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 20vh;
+  height: 20vh;
   background-color: grey;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 5vh;
 }
 
 .camera-icon img {
@@ -360,11 +364,13 @@ div.profile-container {
 .nav-button {
   background-color: transparent;
   border: 1px solid black;
-  padding: 12px;
-  text-align: left;
+  padding: 12px 30px 12px 30px;
+  text-align: center;
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 6px;
+  width: 25vw;
+  font-size: 30pt;
 }
 
 .nav-button:hover {
@@ -372,31 +378,33 @@ div.profile-container {
 }
 
 .profile-content {
-  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: 60px;
-  box-sizing: border-box;
-  margin-top: 10%;
+  margin-top: 3vh;
+  width: 90vw;
 }
 
 .profile-content h1 {
-  margin-top: 0;
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 4.8rem;
+  margin-bottom: 25px;
   color: #222;
 }
 
 .account-form {
-  max-width: 500px;
+  max-width: 730px;
+  width: 90vw;
   display: flex;
   flex-direction: column;
-  font-size: 1.3rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-  font-size: 1.9rem;
+  font-size: 2.5rem;
 }
 
 label {

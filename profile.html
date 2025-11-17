@@ -24,29 +24,28 @@ Skeleton only has the shared footer and navbar so far
     <!-- <site-navbar></site-navbar> -->
 
     <!-- Main stuff -->
+    <button class="back-btn">&lt; Back</button>
     <div class="profile-container">
-      <aside class="sidebar">
-        <button class="back-btn">&lt; Back</button>
-        <div class="profile-section">
-          <div class="profile-pic">
-            <span class="camera-icon">
-              <img src="/images/cameraOne.jpg" alt="Camthing" />
-            </span>
-          </div>
-          <input
-            type="file"
-            id="profile-pic-input"
-            accept="image/*"
-            style="display: none"
-          />
-
-          <nav class="sidebar-nav">
-            <button class="nav-button">Account</button>
-            <button class="nav-button">Settings</button>
-            <button class="nav-button">Privacy</button>
-          </nav>
+      <div class="profile-section">
+        <div class="profile-pic">
+          <span class="camera-icon">
+            <img src="/images/cameraOne.jpg" alt="camera" />
+          </span>
         </div>
-      </aside>
+        <input
+          type="file"
+          id="profile-pic-input"
+          accept="image/*"
+          style="display: none"
+        />
+      </div>
+      <div id="nav-container">
+        <nav class="profile-nav">
+          <button class="nav-button">Account</button>
+          <button class="nav-button">Settings</button>
+          <button class="nav-button">Privacy</button>
+        </nav>
+      </div>
       <section class="profile-content">
         <h1>Account Settings</h1>
 
