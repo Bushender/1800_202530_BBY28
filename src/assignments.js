@@ -10,6 +10,8 @@ import {
   deleteDoc,
   query,
   where,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 
 onAuthStateChanged(getAuth(), (user) => {
@@ -28,14 +30,22 @@ const create = document.getElementById("createBtn");
 const cancel = document.getElementById("cancelBtn");
 const overlay = document.getElementById("overlay");
 
-const edit = document.getElementById("editBtn");
 const editForm = document.getElementById("editForm");
-const cancelEdit = document.getElementById("cancelEditBtn");
+const cancelEdit = document.getElementById("editCancelBtn");
 const container = document.getElementById("assignmentContainer");
+const deleteBtn = document.getElementById("deleteBtn");
+
+let currentAssignmentID = null;
 
 cancel.addEventListener("click", closeForm);
 
 cancelEdit.addEventListener("click", closeForm);
+
+deleteBtn.addEventListener("click", async () => {
+  await deleteDoc(doc(db, "assignments", currentAssignmentID));
+  loadAssignments(getAuth().currentUser);
+  closeForm();
+});
 
 function closeForm() {
   assignmentForm.style.display = "none";
@@ -72,46 +82,93 @@ create.addEventListener("click", async () => {
   loadAssignments(user);
 });
 
+// Toggles whether an assignment is in the done array or not
+async function toggleDone(id, isChecked) {
+  const user = getAuth().currentUser;
+  const userRef = doc(db, "users", user.uid);
+
+  if (isChecked) {
+    await updateDoc(userRef, { done: arrayUnion(id) });
+  } else {
+    await updateDoc(userRef, { done: arrayRemove(id) });
+  }
+}
+
+// Renders an assignment
+function renderAssignment(id, data, isDone = false) {
+  const newAssignment = document.createElement("div");
+
+  newAssignment.classList.add("assignmentItem");
+  newAssignment.dataset.id = id;
+
+  newAssignment.innerHTML = `
+    <div class="checkboxContainer">
+      <input class="checkbox" type="checkbox" id="check-${id}">
+      <label class="circle" for="check-${id}"></label>
+    </div>
+
+    <div class="assignmentBox">
+      <div class="top">${data.className}
+        <button class="editBtn">
+          <img src="images/edit_icon.png" alt="menu" class="edit">
+        </button>
+      </div>
+      <div class="bottom">${data.name}
+      <span class="dueDate">${data.dueDate}</span>
+      </div>
+    </div>
+    `;
+
+  container.appendChild(newAssignment);
+
+  const checkbox = newAssignment.querySelector(".checkbox");
+  checkbox.checked = isDone;
+  checkbox.addEventListener("change", async (e) => {
+    await toggleDone(id, e.target.checked);
+    loadAssignments(getAuth().currentUser);
+  });
+}
+
 // Loading all set assignments to assignments page
 async function loadAssignments(user) {
   const userRef = doc(db, "users", user.uid);
   const userSnap = await getDoc(userRef);
   const set = userSnap.data().set;
 
-  const container = document.getElementById("assignmentContainer");
-  container.innerHTML = "";
+  // Ensures that the user already has a "done" array
+  if (!userSnap.data().done) {
+    await updateDoc(userRef, { done: [] });
+  }
+  const done = userSnap.data().done;
 
   // finds and gets the assignments with the same set as the user
   const q = query(collection(db, "assignments"), where("set", "==", set));
   const setAssignments = await getDocs(q);
 
+  let doneAssignments = [];
+  let notDoneAssignments = [];
+
   setAssignments.forEach((assignment) => {
-    const data = assignment.data();
-    const newAssignment = document.createElement("div");
-
-    newAssignment.classList.add("assignmentItem");
-    newAssignment.dataset.id = assignment.id;
-
-    newAssignment.innerHTML = `
-    <div class="top">${data.className}
-      <button class="menu" type="button">
-        <img src="images/dots.png" alt="menu" class="dots">
-      </button>
-    </div>
-    <ul class="detailsDropdown dropdown-menu dropdown-menu-end">
-      <li><button class="editBtn">Edit</button></li>
-      <li class="dropdown-divider"> </li>
-      <li><button class="deleteBtn">Delete</button></li>
-    </ul>
-    <div class="bottom">${data.name}
-    <span>Due: ${data.dueDate}</span>
-    </div>
-    `;
-    container.appendChild(newAssignment);
+    if (done.includes(assignment.id)) {
+      doneAssignments.push(assignment);
+    } else {
+      notDoneAssignments.push(assignment);
+    }
   });
+
+  const container = document.getElementById("assignmentContainer");
+  container.innerHTML = "";
+
+  notDoneAssignments.forEach((assignment) =>
+    renderAssignment(assignment.id, assignment.data())
+  );
+
+  doneAssignments.forEach((assignment) =>
+    renderAssignment(assignment.id, assignment.data(), true)
+  );
 }
 
-// menu control (edit, delete, save edit)
+// menu control (edit, save edit)
 container.addEventListener("click", async (e) => {
   const target = e.target;
   const assignment = target.closest(".assignmentItem");
@@ -119,30 +176,10 @@ container.addEventListener("click", async (e) => {
     return;
   }
   const assignmentID = assignment.dataset.id;
-  const dropdown = assignment.querySelector(".detailsDropdown");
-
-  if (target.closest(".menu")) {
-    dropdown.style.display =
-      dropdown.style.display === "none" ? "flex" : "none";
-  }
-
-  if (
-    !target.closest(".menu") &&
-    !target.closest(".editBtn") &&
-    !target.closest(".deleteBtn")
-  ) {
-    dropdown.style.display = "none";
-  }
-
-  if (target.closest(".deleteBtn")) {
-    await deleteDoc(doc(db, "assignments", assignmentID));
-    dropdown.style.display = "none";
-    loadAssignments(getAuth().currentUser);
-    return;
-  }
 
   if (target.closest(".editBtn")) {
-    dropdown.style.display = "none";
+    currentAssignmentID = assignmentID;
+
     const className = document.getElementById("classEdit");
     const name = document.getElementById("assignmentEdit");
     const dueDate = document.getElementById("dateEdit");

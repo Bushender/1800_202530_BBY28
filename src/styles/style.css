@@ -546,6 +546,11 @@ select:focus {
   text-align: right;
 }
 
+.editBtn {
+  background-color: rgb(174, 173, 185);
+  border: none;
+}
+
 #className,
 #assignmentName,
 #dueDate,
@@ -561,7 +566,8 @@ select:focus {
 #createBtn,
 #cancelBtn,
 #saveBtn,
-#cancelEditBtn {
+#deleteBtn,
+#editCancelBtn {
   border: none;
   font-size: 0.9em;
   font-weight: bold;
@@ -576,11 +582,21 @@ select:focus {
   overflow-y: auto;
 }
 
+#assignmentLayout {
+  color: #4957a5;
+}
+
 .assignmentItem {
+  display: flex;
+}
+
+.assignmentBox {
+  width: 75vw;
+  float: right;
   position: relative;
   margin-bottom: 50px;
-  margin-left: 70px;
-  margin-right: 70px;
+  margin-left: 60px;
+  margin-right: 60px;
   font-size: 3em;
   background-color: rgb(174, 173, 185);
   padding: 15px;
@@ -601,15 +617,19 @@ select:focus {
   padding: 0px;
 }
 
+.dueDate {
+  color: rgb(165, 50, 50);
+}
+
 .top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dots {
-  width: 80px;
-  height: 80px;
+.edit {
+  width: 70px;
+  height: 70px;
 }
 
 .bottom {
@@ -619,29 +639,41 @@ select:focus {
   font-size: 0.9em;
 }
 
-.detailsDropdown {
+.checkBox {
+  display: flex;
+  margin-bottom: 200px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.checkboxContainer input {
   display: none;
-  top: 90px; /* right below the .top button */
-  right: 27px; /* align to the right edge of the button */
-  z-index: 20;
-  width: auto;
-  background-color: rgb(255, 255, 255);
-  flex-direction: column;
-  border: 3px solid black;
-  padding: 0;
 }
 
-.detailsDropdown button {
-  display: block;
-  font-size: 3em;
-  background-color: white;
-  padding: 0 20px 0 20px;
-  margin: none;
-  border: none;
-  text-align: left;
-  text-align: center;
+.checkboxContainer input:checked + .circle {
+  background-color: rgb(19, 43, 95);
+  border-color: rgb(19, 43, 95);
 }
 
-.detailsDropdown button:hover {
-  background-color: #cecfdd;
+.checkboxContainer input:checked + .circle::after {
+  content: "✔";
+  position: absolute;
+  top: -5%;
+  left: 15%;
+  font-size: 3.3em;
+  color: white;
 }
