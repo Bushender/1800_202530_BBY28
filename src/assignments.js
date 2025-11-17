@@ -10,6 +10,8 @@ import {
   deleteDoc,
   query,
   where,
+  arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 
 onAuthStateChanged(getAuth(), (user) => {
@@ -31,6 +33,7 @@ const overlay = document.getElementById("overlay");
 const editForm = document.getElementById("editForm");
 const cancelEdit = document.getElementById("editCancelBtn");
 const container = document.getElementById("assignmentContainer");
+const deleteBtn = document.getElementById("deleteBtn");
 
 let currentAssignmentID = null;
 
@@ -79,30 +82,29 @@ create.addEventListener("click", async () => {
   loadAssignments(user);
 });
 
-// Loading all set assignments to assignments page
-async function loadAssignments(user) {
+// Toggles whether an assignment is in the done array or not
+async function toggleDone(id, isChecked) {
+  const user = getAuth().currentUser;
   const userRef = doc(db, "users", user.uid);
-  const userSnap = await getDoc(userRef);
-  const set = userSnap.data().set;
 
-  const container = document.getElementById("assignmentContainer");
-  container.innerHTML = "";
+  if (isChecked) {
+    await updateDoc(userRef, { done: arrayUnion(id) });
+  } else {
+    await updateDoc(userRef, { done: arrayRemove(id) });
+  }
+}
 
-  // finds and gets the assignments with the same set as the user
-  const q = query(collection(db, "assignments"), where("set", "==", set));
-  const setAssignments = await getDocs(q);
+// Renders an assignment
+function renderAssignment(id, data, isDone = false) {
+  const newAssignment = document.createElement("div");
 
-  setAssignments.forEach((assignment) => {
-    const data = assignment.data();
-    const newAssignment = document.createElement("div");
+  newAssignment.classList.add("assignmentItem");
+  newAssignment.dataset.id = id;
 
-    newAssignment.classList.add("assignmentItem");
-    newAssignment.dataset.id = assignment.id;
-
-    newAssignment.innerHTML = `
+  newAssignment.innerHTML = `
     <div class="checkboxContainer">
-      <input class="checkbox" type="checkbox" id="check-${assignment.id}">
-      <label class="circle" for="check-${assignment.id}"></label>
+      <input class="checkbox" type="checkbox" id="check-${id}">
+      <label class="circle" for="check-${id}"></label>
     </div>
 
     <div class="assignmentBox">
@@ -117,11 +119,56 @@ async function loadAssignments(user) {
     </div>
     `;
 
-    container.appendChild(newAssignment);
+  container.appendChild(newAssignment);
+
+  const checkbox = newAssignment.querySelector(".checkbox");
+  checkbox.checked = isDone;
+  checkbox.addEventListener("change", async (e) => {
+    await toggleDone(id, e.target.checked);
+    loadAssignments(getAuth().currentUser);
   });
 }
 
-// menu control (edit, delete, save edit)
+// Loading all set assignments to assignments page
+async function loadAssignments(user) {
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+  const set = userSnap.data().set;
+
+  // Ensures that the user already has a "done" array
+  if (!userSnap.data().done) {
+    await updateDoc(userRef, { done: [] });
+  }
+  const done = userSnap.data().done;
+
+  // finds and gets the assignments with the same set as the user
+  const q = query(collection(db, "assignments"), where("set", "==", set));
+  const setAssignments = await getDocs(q);
+
+  let doneAssignments = [];
+  let notDoneAssignments = [];
+
+  setAssignments.forEach((assignment) => {
+    if (done.includes(assignment.id)) {
+      doneAssignments.push(assignment);
+    } else {
+      notDoneAssignments.push(assignment);
+    }
+  });
+
+  const container = document.getElementById("assignmentContainer");
+  container.innerHTML = "";
+
+  notDoneAssignments.forEach((assignment) =>
+    renderAssignment(assignment.id, assignment.data())
+  );
+
+  doneAssignments.forEach((assignment) =>
+    renderAssignment(assignment.id, assignment.data(), true)
+  );
+}
+
+// menu control (edit, save edit)
 container.addEventListener("click", async (e) => {
   const target = e.target;
   const assignment = target.closest(".assignmentItem");
