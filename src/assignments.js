@@ -28,14 +28,21 @@ const create = document.getElementById("createBtn");
 const cancel = document.getElementById("cancelBtn");
 const overlay = document.getElementById("overlay");
 
-const edit = document.getElementById("editBtn");
 const editForm = document.getElementById("editForm");
-const cancelEdit = document.getElementById("cancelEditBtn");
+const cancelEdit = document.getElementById("editCancelBtn");
 const container = document.getElementById("assignmentContainer");
+
+let currentAssignmentID = null;
 
 cancel.addEventListener("click", closeForm);
 
 cancelEdit.addEventListener("click", closeForm);
+
+deleteBtn.addEventListener("click", async () => {
+  await deleteDoc(doc(db, "assignments", currentAssignmentID));
+  loadAssignments(getAuth().currentUser);
+  closeForm();
+});
 
 function closeForm() {
   assignmentForm.style.display = "none";
@@ -93,20 +100,23 @@ async function loadAssignments(user) {
     newAssignment.dataset.id = assignment.id;
 
     newAssignment.innerHTML = `
-    <div class="top">${data.className}
-      <button class="menu" type="button">
-        <img src="images/dots.png" alt="menu" class="dots">
-      </button>
+    <div class="checkboxContainer">
+      <input class="checkbox" type="checkbox" id="check-${assignment.id}">
+      <label class="circle" for="check-${assignment.id}"></label>
     </div>
-    <ul class="detailsDropdown dropdown-menu dropdown-menu-end">
-      <li><button class="editBtn">Edit</button></li>
-      <li class="dropdown-divider"> </li>
-      <li><button class="deleteBtn">Delete</button></li>
-    </ul>
-    <div class="bottom">${data.name}
-    <span>Due: ${data.dueDate}</span>
+
+    <div class="assignmentBox">
+      <div class="top">${data.className}
+        <button class="editBtn">
+          <img src="images/edit_icon.png" alt="menu" class="edit">
+        </button>
+      </div>
+      <div class="bottom">${data.name}
+      <span class="dueDate">${data.dueDate}</span>
+      </div>
     </div>
     `;
+
     container.appendChild(newAssignment);
   });
 }
@@ -119,30 +129,10 @@ container.addEventListener("click", async (e) => {
     return;
   }
   const assignmentID = assignment.dataset.id;
-  const dropdown = assignment.querySelector(".detailsDropdown");
-
-  if (target.closest(".menu")) {
-    dropdown.style.display =
-      dropdown.style.display === "none" ? "flex" : "none";
-  }
-
-  if (
-    !target.closest(".menu") &&
-    !target.closest(".editBtn") &&
-    !target.closest(".deleteBtn")
-  ) {
-    dropdown.style.display = "none";
-  }
-
-  if (target.closest(".deleteBtn")) {
-    await deleteDoc(doc(db, "assignments", assignmentID));
-    dropdown.style.display = "none";
-    loadAssignments(getAuth().currentUser);
-    return;
-  }
 
   if (target.closest(".editBtn")) {
-    dropdown.style.display = "none";
+    currentAssignmentID = assignmentID;
+
     const className = document.getElementById("classEdit");
     const name = document.getElementById("assignmentEdit");
     const dueDate = document.getElementById("dateEdit");
