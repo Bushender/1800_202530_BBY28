@@ -4,6 +4,37 @@ Skeleton only has the shared footer and navbar so far
 -->
 
 <html lang="en">
+
+<style>
+
+#scheduleTable {
+display: flex;
+justify-content: center; 
+align-items: center; 
+height: 80vh; 
+width: 100vw;
+}
+
+table, th, tr, td{
+  padding: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-style: solid;
+  border-width: 8px;
+  background-color: grey;
+  color: black;
+  font-weight: normal;
+  font-size: xx-large;
+  border-color: black;
+
+}
+table{
+    border-radius: 4px;
+}
+
+
+</style>
+
   <head>
     <title>Campus Companion</title>
     <meta charset="utf-8" />
@@ -11,11 +42,18 @@ Skeleton only has the shared footer and navbar so far
     <!--Web Components-->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
+    <script type="module" src="/src/schedule.js"></script>
   </head>
 
   <body>
     <!--Navbar-->
     <site-navbar></site-navbar>
+
+
+
+    <div id="scheduleTable"></div> 
+<!-- make look less broke and unemployed -->
+
 
     <!--Footer-->
     <site-footer></site-footer>
