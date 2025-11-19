@@ -26,73 +26,20 @@ REMINDER THAT THIS IS ALSO THE MAP PAGE
     <site-navbar></site-navbar>
 
     <!-- MAP HTML -->
-    <main>
-      <div class="map-container">
-        <nav class="map-Nav">
-          <!-- drop down for SW -->
-          <div class="drop-Down">
-            <button class="button-SW">South West ▾</button>
-            <div class="content-SW">
-              <ul>
-                <li>SW1</li>
-                <li>SW2</li>
-                <li>SW3</li>
-                <li>SW4</li>
-              </ul>
-            </div>
-          </div>
 
-          <!-- Drop down for SE -->
-          <div class="drop-Down">
-            <button class="button-SE">South East ▾</button>
-            <div class="content-SE">
-              <ul>
-                <li>SE1</li>
-                <li>SE2</li>
-                <li>SE3</li>
-                <li>SE4</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- NW drop down -->
-          <div class="drop-Down">
-            <button class="button-NW">North West ▾</button>
-            <div class="content-NW">
-              <ul>
-                <li>NW1</li>
-                <li>NW2</li>
-                <li>NW3</li>
-                <li>NW4</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- NE drop down -->
-          <div class="drop-Down">
-            <button class="button-NE">North East ▾</button>
-            <div class="content-NE">
-              <ul>
-                <li>NE1</li>
-                <li>NE2</li>
-                <li>NE3</li>
-                <li>NE4</li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
-        <div class="Map">
-          <iframe
-            class="BCITMAP"
-            src="https://www.google.com/maps?q=BCIT%20Burnaby%20Campus&hl=en&z=18&output=embed"
-            allowfullscreen=""
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-          <div class="map-overlay"></div>
-        </div>
-      </div>
+    <main id="map-container">
+      <div id="map"></div>
+      <div id="instructions"></div>
     </main>
+
+    <!-- DROPDOWN BAR (now outside map-container) -->
+    <div class="floor-selector">
+      <button class="floor-btn">SW</button>
+      <button class="floor-btn">SE</button>
+      <button class="floor-btn">NW</button>
+      <button class="floor-btn">NE</button>
+    </div>
+
     <!--Footer-->
     <site-footer></site-footer>
 
