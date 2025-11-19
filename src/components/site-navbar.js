@@ -100,17 +100,54 @@ class SiteNavbar extends HTMLElement {
     const displayNameElement = this.querySelector("#displayName");
 
     onAuthReady(async (user) => {
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-      const name = userDoc.exists()
-        ? userDoc.data().name
-        : user.name || "anonymous";
-      const displayName = userDoc.exists()
-        ? userDoc.data().displayName
-        : user.displayName || "anonymous";
+      // This is to check for IFFFFF the user is logged in or not and if not it deals
+      // with the un caught uid promise error.
+      if (!user) {
+        console.log("No user logged in — navbar using default icons.");
 
+        const navbarIcon = this.querySelector("#pfpIcon");
+        const dropdownIcon = this.querySelector("#dropdownPFP");
+
+        if (navbarIcon) navbarIcon.src = "images/user_icon.png";
+        if (dropdownIcon) dropdownIcon.src = "images/user_icon.png";
+
+        if (nameElement) nameElement.textContent = "";
+        if (displayNameElement) displayNameElement.textContent = "Guest";
+
+        return;
+      }
+
+      const userRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userRef);
+
+      let name = "anonymous";
+      let displayName = "anonymous";
+      let profileImage = null;
+
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        name = data.name || name;
+        displayName = data.displayName || displayName;
+        profileImage = data.profileImage || null;
+      }
+
+      // Update text labels
       if (nameElement) {
-        nameElement.textContent = `${name}`;
-        displayNameElement.textContent = `${displayName}`;
+        nameElement.textContent = name;
+      }
+      if (displayNameElement) {
+        displayNameElement.textContent = displayName;
+      }
+
+      //This is to load the profile imagage for the profile
+      const navbarIcon = this.querySelector("#pfpIcon");
+      const dropdownIcon = this.querySelector("#dropdownPFP");
+
+      if (profileImage) {
+        const imgSrc = `data:image/png;base64,${profileImage}`;
+
+        if (navbarIcon) navbarIcon.src = imgSrc;
+        if (dropdownIcon) dropdownIcon.src = imgSrc;
       }
     });
   }

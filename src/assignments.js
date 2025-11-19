@@ -65,7 +65,13 @@ create.addEventListener("click", async () => {
 
   const className = document.getElementById("className").value;
   const name = document.getElementById("assignmentName").value;
-  const dueDate = document.getElementById("dueDate").value;
+  const dueDate = document.getElementById("dueDate").value.trim();
+
+  // Validate input date
+  if (!isValidDate(dueDate)) {
+    alert("Please enter a valid date in YYYY-MM-DD format.");
+    return;
+  }
 
   const userRef = doc(db, "users", user.uid);
   const userSnap = await getDoc(userRef);
@@ -168,6 +174,30 @@ async function loadAssignments(user) {
   );
 }
 
+function isValidDate(dateString) {
+  // Must be exactly YYYY-MM-DD yes i used a regex yes we learnt in java what regex are
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!regex.test(dateString)) return false;
+
+  const [year, month, day] = dateString.split("-").map(Number);
+
+  // Month must be 1–12
+  if (month < 1 || month > 12) return false;
+
+  // Day must be 1–31
+  if (day < 1 || day > 31) return false;
+
+  // Create date
+  const actual = new Date(year, month - 1, day);
+
+  // Make sure that the year month and day will be correct
+  return (
+    actual.getFullYear() === year &&
+    actual.getMonth() === month - 1 &&
+    actual.getDate() === day
+  );
+}
+
 // menu control (edit, save edit)
 container.addEventListener("click", async (e) => {
   const target = e.target;
@@ -198,7 +228,14 @@ container.addEventListener("click", async (e) => {
     document.getElementById("saveBtn").onclick = async () => {
       const classValue = className.value;
       const assignmentValue = name.value;
-      const dateValue = dueDate.value;
+      const dateValue = dueDate.value.trim();
+
+      // Validate input date
+      if (!isValidDate(dateValue)) {
+        alert("Please enter a valid date in YYYY-MM-DD format.");
+        return;
+      }
+
       const docRef = doc(db, "assignments", assignmentID);
 
       await updateDoc(docRef, {
