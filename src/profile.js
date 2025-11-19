@@ -12,17 +12,18 @@ if (backButton) {
   });
 }
 
-// ======== PROFILE PICTURE (NEW BASE64 SYSTEM) ======== //
+// profile picture upload logic
 
 const profilePic = document.querySelector(".profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
 
-// Click the circle → open file picker
+// an even listener for clicking the profile
 if (profilePic && profilePicInput) {
   profilePic.addEventListener("click", () => {
     profilePicInput.click();
   });
 
+  // event listener for file input change
   profilePicInput.addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -86,8 +87,6 @@ function loadProfileImage() {
 }
 
 loadProfileImage();
-
-// ======== REST OF YOUR EXISTING CODE (unchanged) ======== //
 
 const navButtons = document.querySelectorAll(".nav-button");
 const editBtn = document.querySelector(".edit-btn");
