@@ -4,7 +4,7 @@ import { db } from "/src/firebaseConfig.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-// back button so fire
+// back button
 const backButton = document.querySelector(".back-btn");
 if (backButton) {
   backButton.addEventListener("click", () => {
@@ -12,28 +12,81 @@ if (backButton) {
   });
 }
 
-// Profile change this thing takes user file for the picture
+// profile picture upload logic
+
 const profilePic = document.querySelector(".profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
 
+// an even listener for clicking the profile
 if (profilePic && profilePicInput) {
   profilePic.addEventListener("click", () => {
     profilePicInput.click();
   });
 
-  profilePicInput.addEventListener("change", (event) => {
+  // event listener for file input change
+  profilePicInput.addEventListener("change", async (event) => {
     const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        profilePic.style.backgroundImage = `url(${e.target.result})`;
-        profilePic.style.backgroundSize = "cover";
-        profilePic.style.backgroundPosition = "center";
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const base64String = e.target.result.split(",")[1];
+
+      // visually show the selected picture
+      displayProfileImage(base64String);
+
+      // save to Firestore
+      saveProfileImage(base64String);
+    };
+
+    reader.readAsDataURL(file);
+  });
+}
+
+// Save Base64 string to Firestore
+async function saveProfileImage(base64String) {
+  const user = auth.currentUser;
+
+  if (!user) {
+    console.error("No user signed in.");
+    return;
+  }
+
+  try {
+    const userRef = doc(db, "users", user.uid);
+    await setDoc(userRef, { profileImage: base64String }, { merge: true });
+
+    console.log("Profile image saved successfully.");
+  } catch (error) {
+    console.error("Error saving profile image:", error);
+  }
+}
+
+// Display Base64 image inside the circular div
+function displayProfileImage(base64String) {
+  if (profilePic) {
+    profilePic.style.backgroundImage = `url(data:image/png;base64,${base64String})`;
+    profilePic.style.backgroundSize = "cover";
+    profilePic.style.backgroundPosition = "center";
+  }
+}
+
+// Load profile picture on page load
+function loadProfileImage() {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+
+    const userRef = doc(db, "users", user.uid);
+    const snap = await getDoc(userRef);
+
+    if (snap.exists() && snap.data().profileImage) {
+      displayProfileImage(snap.data().profileImage);
     }
   });
 }
+
+loadProfileImage();
 
 const navButtons = document.querySelectorAll(".nav-button");
 const editBtn = document.querySelector(".edit-btn");
@@ -42,17 +95,17 @@ const inputs = document.querySelectorAll(
   ".account-form input, .account-form select"
 );
 
-// locking the forms hahah
+// lock inputs
 inputs.forEach((input) => (input.disabled = true));
 
-// enable them on edit
+// enable on edit
 editBtn.addEventListener("click", () => {
   inputs.forEach((input) => (input.disabled = false));
   editBtn.style.display = "none";
   saveBtn.style.display = "inline-flex";
 });
 
-// show which nav you're on so cool
+// nav highlight
 navButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     navButtons.forEach((b) => b.classList.remove("active"));
@@ -60,19 +113,16 @@ navButtons.forEach((btn) => {
   });
 });
 
-//This is for save button so that it works correctly
+// save button logic
 saveBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   await saveUserInfo();
-
-  // Lock inputs again
   inputs.forEach((input) => (input.disabled = true));
   saveBtn.style.display = "none";
   editBtn.style.display = "inline-flex";
 });
 
-//populating the forms
-
+// populate form from Firestore
 function populateUserInfo() {
   onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -92,26 +142,17 @@ function populateUserInfo() {
           document.getElementById("username").value = name;
           document.getElementById("display-name").value = displayName;
           document.getElementById("set").value = set || "Select";
-        } else {
-          console.log("No user document found for this account.");
         }
       } catch (error) {
         console.error("Error fetching user document:", error);
       }
-    } else {
-      console.log("No user is signed in.");
     }
   });
 }
 
-// Saving user data to firestore
-
 async function saveUserInfo() {
   const user = auth.currentUser;
-  if (!user) {
-    console.error("No user signed in. Cannot save.");
-    return;
-  }
+  if (!user) return;
 
   try {
     const userRef = doc(db, "users", user.uid);
@@ -123,50 +164,9 @@ async function saveUserInfo() {
     };
 
     await setDoc(userRef, updatedData, { merge: true });
-    console.log("User data successfully saved:", updatedData);
   } catch (error) {
     console.error("Error saving user data:", error);
   }
 }
 
 populateUserInfo();
-
-// // Profile change this thing takes user file for the picture
-// const profilePic = document.querySelector(".profile-pic");
-// const profilePicInput = document.getElementById("profile-pic-input");
-
-// if (profilePic && profilePicInput) {
-//   profilePic.addEventListener("click", () => {
-//     profilePicInput.click();
-//   });
-
-//   profilePicInput.addEventListener("change", async (event) => {
-//     const file = event.target.files[0];
-//     if (!file) return;
-
-//     const user = auth.currentUser;
-//     if (!user) {
-//       console.error("No user signed in. Cannot upload image.");
-//       return;
-//     }
-
-//     try {
-//       const storageRef = ref(storage, `profilePictures/${user.uid}`);
-
-//       await uploadBytes(storageRef, file);
-
-//       const downloadURL = await getDownloadURL(storageRef);
-
-//       profilePic.style.backgroundImage = `url(${downloadURL})`;
-//       profilePic.style.backgroundSize = "cover";
-//       profilePic.style.backgroundPosition = "center";
-
-//       const userRef = doc(db, "users", user.uid);
-//       await setDoc(userRef, { photoURL: downloadURL }, { merge: true });
-
-//       console.log("Profile picture uploaded and saved:", downloadURL);
-//     } catch (error) {
-//       console.error("Error uploading profile picture:", error);
-//     }
-//   });
-// }
