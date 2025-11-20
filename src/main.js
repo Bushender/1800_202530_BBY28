@@ -219,11 +219,8 @@ async function getRoute(map, start, end) {
       },
     });
   }
-  //--------------------------------------------
-  // BONUS: display the turn-by-turn legs of the route
+
   // get the sidebar and add the instructions
-  // we use a bicycle icon for fun!  :)
-  //--------------------------------------------
   const instructions = document.getElementById("instructions");
   const steps = data.legs[0].steps;
 
