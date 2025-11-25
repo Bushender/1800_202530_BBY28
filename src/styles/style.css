@@ -149,6 +149,10 @@ nav {
   font-size: 2vh;
 }
 
+#summary {
+  font-size: 2vh;
+}
+
 #loginSignupButton {
   background-color: rgb(124, 124, 158);
   height: 4vh;
@@ -621,4 +625,20 @@ select:focus {
   left: 15%;
   font-size: 3.3em;
   color: white;
+}
+
+/* if assignments don't exist now*/
+
+#noneBox {
+  display: flex;
+  justify-content: center;
+  overflow-wrap: break-word;
+  text-align: center;
+  margin-top: 25vh;
+}
+
+#noneText {
+  width: 80vw;
+  font-size: 5em;
+  color: gray;
 }

@@ -165,13 +165,21 @@ async function loadAssignments(user) {
   const container = document.getElementById("assignmentContainer");
   container.innerHTML = "";
 
-  notDoneAssignments.forEach((assignment) =>
-    renderAssignment(assignment.id, assignment.data())
-  );
+  if (doneAssignments.length == 0 && notDoneAssignments.length == 0) {
+    container.innerHTML = `
+    <div id="noneBox">
+      <h1 id="noneText">No assignments have been added yet.</h1>
+    </div>
+    `;
+  } else {
+    notDoneAssignments.forEach((assignment) =>
+      renderAssignment(assignment.id, assignment.data())
+    );
 
-  doneAssignments.forEach((assignment) =>
-    renderAssignment(assignment.id, assignment.data(), true)
-  );
+    doneAssignments.forEach((assignment) =>
+      renderAssignment(assignment.id, assignment.data(), true)
+    );
+  }
 }
 
 function isValidDate(dateString) {

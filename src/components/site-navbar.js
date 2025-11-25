@@ -120,8 +120,8 @@ class SiteNavbar extends HTMLElement {
       const userRef = doc(db, "users", user.uid);
       const userDoc = await getDoc(userRef);
 
-      let name = "anonymous";
-      let displayName = "anonymous";
+      let name = "Username";
+      let displayName = "Display Name";
       let profileImage = null;
 
       if (userDoc.exists()) {
