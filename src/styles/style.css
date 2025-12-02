@@ -30,13 +30,13 @@ nav {
   top: 50px;
   left: 20px;
   width: 25%;
-  max-height: calc(100% - 40px); /* avoid overflowing container */
+  max-height: calc(100% - 40px);
   padding: 20px;
   background-color: #fff;
   overflow-y: auto;
   font-size: 20pt;
   font-family: sans-serif;
-  z-index: 999; /* sits above the map */
+  z-index: 999;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
