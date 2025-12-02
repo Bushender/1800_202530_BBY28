@@ -46,22 +46,28 @@ export async function loginUser(email, password) {
 // Usage:
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
-export async function signupUser(name, email, password) {
+
+export async function signupUser(name, email, password, extraData) {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
     email,
     password
   );
-  const user = userCredential.user; // Get the user object
+  const user = userCredential.user;
+
+  // Update Firebase Auth display name
   await updateProfile(user, { displayName: name });
 
   try {
     await setDoc(doc(db, "users", user.uid), {
       name: name,
       email: email,
-      country: "Canada", // Default value
-      school: "BCIT", // Default value
+      country: "Canada",
+      school: "BCIT",
+      set: extraData.set,
+      age: extraData.age,
     });
+
     console.log("Firestore user document created successfully!");
   } catch (error) {
     console.error("Error creating user document in Firestore:", error);

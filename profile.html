@@ -52,30 +52,54 @@ Skeleton only has the shared footer and navbar so far
         <form class="account-form">
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" class="input-locked" />
           </div>
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" />
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="input-locked"
+            />
           </div>
 
           <div class="form-group">
             <label for="display-name">Display Name</label>
-            <input type="text" id="display-name" name="display-name" />
+            <input
+              type="text"
+              id="display-name"
+              name="display-name"
+              class="input-locked"
+              placeholder="Display Name"
+            />
           </div>
 
           <div class="form-buttons">
-            <select id="set" name="set">
-              <option>Select</option>
+            <select id="set" name="set" class="input-locked">
               <option>Set A</option>
               <option>Set B</option>
               <option>Set C</option>
               <option>Set D</option>
             </select>
+
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="Age"
+              class="age-input input-locked"
+              min="17"
+              max="100"
+            />
+
             <button type="button" class="edit-btn">Edit</button>
             <button type="submit" class="save-btn">Save</button>
           </div>
+
+          <!-- red line that appear if you do something stupid -->
+          <p id="ageErrorProfile" class="text-danger age-error"></p>
         </form>
       </section>
     </div>

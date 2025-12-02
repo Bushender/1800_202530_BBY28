@@ -11,19 +11,21 @@ Skeleton only has the shared footer and navbar so far
     <!--Web Components-->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
+    <link rel="stylesheet" href="/src/styles/style.css" />
   </head>
 
-  <body>
+  <body class="floorplan-placeholder">
     <!--Navbar-->
     <site-navbar></site-navbar>
 
-    <!-- Main stuff -->
     <main>
-      <div>
+      <div class="fp-content">
         <div class="map-title">
-          <h1>Floor Plan for SW2</h1>
+          <h1>Floor Plan</h1>
         </div>
-        <img class="floor-plan" src="/images/SW_02.png" alt="SW1 Floor Plan" />
+
+        <img id="floor-image" src="/images/sw05_floor_1.png" />
+        <img id="floor-image-2" src="/images/sw05_floor_2.png" />
       </div>
     </main>
 

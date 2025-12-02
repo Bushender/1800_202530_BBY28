@@ -232,3 +232,23 @@ async function getRoute(map, start, end) {
     data.duration / 60
   )} min  </strong></p><ol>${tripInstructions}</ol>`;
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const floorButtons = document.querySelectorAll(".floor-selector .floor-btn");
+
+  const routes = {
+    SW: "/SW.html",
+    SE: "/SE.html",
+    NW: "/NW.html",
+    NE: "/NE.html",
+  };
+
+  floorButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const key = btn.textContent;
+      const target = routes[key];
+
+      if (target) window.location.href = target;
+    });
+  });
+});

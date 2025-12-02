@@ -40,8 +40,6 @@ nav {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/*SW1 STYLE STUFF DON'T TOUCH PLS*/
-
 .map-title {
   text-align: center;
   padding-top: 2%;
@@ -55,7 +53,7 @@ nav {
   margin-bottom: 2vh;
 }
 
-.floor-selector {
+.map-page .floor-selector {
   position: fixed;
   bottom: 11vh;
   left: 0;
@@ -69,7 +67,7 @@ nav {
   z-index: 10;
 }
 
-.floor-btn {
+.map-page .floor-selector .floor-btn {
   background-color: white;
   border: none;
   height: 50%;
@@ -80,9 +78,172 @@ nav {
   font-weight: bold;
 }
 
-.floor-btn.active {
+.map-page .floor-btn.active {
   background-color: rgb(82, 107, 163);
   color: white;
+}
+
+/*SW STYLE STUFF DON'T TOUCH PLS*/
+
+/* Only for the SW page */
+.sw-floor-selector {
+  position: static;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+  margin-top: 10vh;
+}
+
+.sw-floor-selector .floor-btn {
+  width: 50vw;
+  max-width: 300px;
+  padding: 20px;
+  background-color: rgb(82, 107, 163);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
+/* End SW STYLE STUFF DON'T TOUCH PLS*/
+
+/* SE STYLE STUFF DON'T TOUCH PLS*/
+
+.se-page .se-floor-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9%;
+  position: static;
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background: none;
+}
+
+.se-page .se-floor-selector .floor-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+
+  background-color: rgb(82, 107, 163);
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+/* End SE STYLE STUFF DON'T TOUCH PLS*/
+
+/*NW STYLE STUFF DON'T TOUCH PLS*/
+
+.nw-page .nw-floor-selector {
+  position: static;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+  margin-top: 3vh;
+}
+
+.nw-page .nw-floor-selector .floor-btn {
+  width: 50vw;
+  max-width: 300px;
+  padding: 20px;
+  background-color: rgb(82, 107, 163);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+
+/* End NW STYLE STUFF DON'T TOUCH PLS*/
+
+/*NE STYLE STUFF DON'T TOUCH PLS*/
+
+.ne-page main {
+  padding-bottom: 60vh;
+}
+
+.ne-page .ne-floor-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9%;
+  position: static;
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background: none;
+}
+
+.ne-page .ne-floor-selector .floor-btn {
+  width: 100%;
+  padding: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+
+  background-color: rgb(82, 107, 163);
+  color: white;
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+/*NE STYLE STUFF DON'T TOUCH PLS*/
+
+/*FLOOR PLAN STYLES DON'T TOUCH PLS*/
+
+.floorplan-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fp-main {
+  flex: 1;
+  padding-bottom: 15vh;
+}
+
+.floorplan-placeholder .map-title {
+  width: 100%;
+  background-color: rgb(255, 230, 109);
+  margin-top: -2rem;
+  text-align: center;
+  display: block;
+}
+
+.map-title h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.floorplan-placeholder {
+  padding-bottom: 12vh;
+}
+
+.floorplan-placeholder .fp-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.floorplan-placeholder #floor-image,
+.floorplan-placeholder #floor-image-2 {
+  width: 90%;
+  max-width: 700px;
+  height: auto;
+  margin-bottom: 2rem;
 }
 
 /*SEPERATE MAP FROM OTHER STUFF*/
@@ -240,6 +401,23 @@ nav {
   font-size: 2vh;
 }
 
+#signupSet,
+#signupAge {
+  margin-top: 5%;
+  height: 3.5vh;
+  width: 19.2vw;
+  font-size: 1.5vh;
+  border-radius: 1vh;
+}
+
+.text-danger {
+  color: red;
+}
+
+.form-control.input-error {
+  border: 2px solid red;
+}
+
 /*profile page css*/
 
 body {
@@ -251,7 +429,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15vh;
+  margin-bottom: 20vh;
 }
 
 .sidebar {
@@ -292,8 +470,8 @@ body {
 
 .profile-pic {
   position: relative;
-  width: 20vh;
-  height: 20vh;
+  width: 15vh;
+  height: 15vh;
   background-color: grey;
   border-radius: 50%;
   margin-bottom: 5vh;
@@ -331,14 +509,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 60px;
-  margin-top: 3vh;
+  padding: 30px;
   width: 90vw;
 }
 
 .profile-content h1 {
   font-size: 4.8rem;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   color: #222;
 }
 
@@ -364,7 +541,7 @@ label {
 
 input {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   border-radius: 6px;
   font-size: 2rem;
   outline: none;
@@ -379,27 +556,38 @@ select:focus {
   margin-top: 20px;
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 10%;
 }
 
 .form-buttons select {
-  width: 150px;
-  height: 60px;
+  width: 20vw;
+  height: 4vh;
   font-size: 1.4rem;
   cursor: pointer;
   border-radius: 6px;
   padding: 4px 8px;
+  border: 1px solid black;
 }
 
 .form-buttons select > option {
   font-size: 0.7rem;
 }
 
+.age-input {
+  width: 20vw;
+  height: 4vh;
+  padding: 8px;
+  font-size: 1.4rem;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
 .edit-btn,
 .save-btn {
   padding: 15px 25px;
   font-size: 1.4rem;
-  height: 60px;
+  width: 20vw;
+  height: 4vh;
   display: flex;
   align-items: center;
 }
@@ -414,6 +602,26 @@ select:focus {
   color: white;
   border: none;
 }
+
+.input-error {
+  border: 2px solid red;
+}
+
+.age-error {
+  font-size: 1.4rem;
+  margin-top: 5px;
+  height: 1.4rem;
+}
+
+.input-locked {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+.input-unlocked {
+  background-color: white;
+}
+
 /* Seperate from others this is still profile page css */
 
 /* Assignment css */
@@ -625,6 +833,23 @@ select:focus {
   left: 15%;
   font-size: 3.3em;
   color: white;
+}
+
+/* Change background color for completed assignments box itself*/
+.assignment-done .assignmentBox {
+  background-color: rgb(109, 109, 127);
+}
+
+/* Change background color for completed assignments edit button*/
+.assignmentItem.assignment-done .editBtn {
+  background-color: rgb(109, 109, 127);
+}
+
+/* Change text color for completed assignments everything else*/
+.assignmentItem.assignment-done .top,
+.assignmentItem.assignment-done .bottom,
+.assignmentItem.assignment-done .dueDate {
+  color: #2c2c2c;
 }
 
 /* if assignments don't exist now*/

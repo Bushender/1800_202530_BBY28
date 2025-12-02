@@ -57,8 +57,12 @@ async function saveProfileImage(base64String) {
     const userRef = doc(db, "users", user.uid);
     await setDoc(userRef, { profileImage: base64String }, { merge: true });
 
+    //This is here just for trouble shooting do not worry
     console.log("Profile image saved successfully.");
+
+    window.location.reload();
   } catch (error) {
+    //same with this.
     console.error("Error saving profile image:", error);
   }
 }
@@ -100,7 +104,12 @@ inputs.forEach((input) => (input.disabled = true));
 
 // enable on edit
 editBtn.addEventListener("click", () => {
-  inputs.forEach((input) => (input.disabled = false));
+  inputs.forEach((input) => {
+    input.disabled = false;
+    input.classList.remove("input-locked");
+    input.classList.add("input-unlocked");
+  });
+
   editBtn.style.display = "none";
   saveBtn.style.display = "inline-flex";
 });
@@ -116,8 +125,15 @@ navButtons.forEach((btn) => {
 // save button logic
 saveBtn.addEventListener("click", async (event) => {
   event.preventDefault();
-  await saveUserInfo();
-  inputs.forEach((input) => (input.disabled = true));
+  const success = await saveUserInfo();
+  if (!success) return;
+
+  inputs.forEach((input) => {
+    input.disabled = true;
+    input.classList.remove("input-unlocked");
+    input.classList.add("input-locked");
+  });
+
   saveBtn.style.display = "none";
   editBtn.style.display = "inline-flex";
 });
@@ -136,12 +152,14 @@ function populateUserInfo() {
             email = "",
             name = "",
             displayName = "",
+            age = "",
           } = userSnap.data();
 
           document.getElementById("email").value = email;
           document.getElementById("username").value = name;
           document.getElementById("display-name").value = displayName;
-          document.getElementById("set").value = set || "Select";
+          document.getElementById("age").value = age;
+          document.getElementById("set").value = set;
         }
       } catch (error) {
         console.error("Error fetching user document:", error);
@@ -150,22 +168,42 @@ function populateUserInfo() {
   });
 }
 
+// This is the code for save button to update database
 async function saveUserInfo() {
   const user = auth.currentUser;
-  if (!user) return;
+  if (!user) return false;
+
+  const ageInput = document.getElementById("age");
+  const ageError = document.getElementById("ageErrorProfile");
+
+  // Clear previous errors
+  ageError.textContent = "";
+  ageInput.classList.remove("input-error");
+
+  const ageValue = parseInt(ageInput.value);
+
+  // Validate age
+  if (isNaN(ageValue) || ageValue < 17 || ageValue > 100) {
+    ageError.textContent = "Age must be between 17 and 100.";
+    ageInput.classList.add("input-error");
+    return false;
+  }
 
   try {
     const userRef = doc(db, "users", user.uid);
     const updatedData = {
       set: document.getElementById("set").value,
+      age: ageValue,
       email: document.getElementById("email").value,
       displayName: document.getElementById("display-name").value,
       name: document.getElementById("username").value,
     };
 
     await setDoc(userRef, updatedData, { merge: true });
+    return true;
   } catch (error) {
     console.error("Error saving user data:", error);
+    return false;
   }
 }
 
