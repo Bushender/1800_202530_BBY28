@@ -24,6 +24,7 @@ onAuthStateChanged(getAuth(), (user) => {
   }
 });
 
+// constants used to load/track all the buttons and append html
 const add = document.getElementById("addButton");
 const assignmentForm = document.getElementById("assignmentForm");
 const create = document.getElementById("createBtn");
