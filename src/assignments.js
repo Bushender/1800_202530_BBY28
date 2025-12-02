@@ -107,6 +107,8 @@ function renderAssignment(id, data, isDone = false) {
   newAssignment.classList.add("assignmentItem");
   newAssignment.dataset.id = id;
 
+  if (isDone) newAssignment.classList.add("assignment-done");
+
   newAssignment.innerHTML = `
     <div class="checkboxContainer">
       <input class="checkbox" type="checkbox" id="check-${id}">

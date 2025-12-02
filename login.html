@@ -149,6 +149,36 @@ Skeleton only has the shared footer and navbar so far
               />
             </div>
 
+            <div class="d-flex justify-content-center gap-3 mb-3 w-auto">
+              <input
+                type="text"
+                id="signupSet"
+                class="form-control"
+                placeholder="Set (A–D)"
+                required
+              />
+
+              <input
+                type="number"
+                id="signupAge"
+                class="form-control"
+                placeholder="Age"
+                required
+              />
+            </div>
+
+            <!-- red line that appear if you do something stupid -->
+            <p
+              id="setError"
+              class="text-danger mt-1"
+              style="font-size: 1.4vh"
+            ></p>
+            <p
+              id="ageError"
+              class="text-danger mt-1"
+              style="font-size: 1.4vh"
+            ></p>
+
             <div
               class="d-flex justify-content-between align-items-center w-75 buttonPos"
             >

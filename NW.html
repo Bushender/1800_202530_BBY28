@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Campus Companion</title>
+    <meta charset="utf-8" />
+
+    <!--Web Components-->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
+
+  <body class="nw-page" data-building="NW">
+    <!--Navbar-->
+    <site-navbar></site-navbar>
+
+    <main>
+      <div class="map-title">
+        <h1>Floor Plan for North West buildings</h1>
+      </div>
+
+      <div class="floor-plan-container">
+        <div class="nw-floor-selector">
+          <button class="floor-btn" data-floor="NW1">NW1</button>
+          <button class="floor-btn" data-floor="NW2">NW2</button>
+          <button class="floor-btn" data-floor="NW3">NW3</button>
+          <button class="floor-btn" data-floor="NW4">NW4</button>
+          <button class="floor-btn" data-floor="NW5">NW5</button>
+          <button class="floor-btn" data-floor="NW6">NW6</button>
+          <button class="floor-btn" data-floor="NW7">NW7</button>
+        </div>
+      </div>
+    </main>
+
+    <!--Footer-->
+    <site-footer></site-footer>
+
+    <script type="module" src="/src/floorPlan.js"></script>
+
+    <script type="module" src="/src/app.js"></script>
+  </body>
+</html>

@@ -93,11 +93,24 @@ function initAuthUI() {
   signupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideError();
+    // Clear previous error messages so that it doesn't just stay on screen :/
+    const setInput = document.getElementById("signupSet");
+    const ageInput = document.getElementById("signupAge");
+
+    document.getElementById("setError").textContent = "";
+    document.getElementById("ageError").textContent = "";
+
+    // Remove previous red borders same thing up there.
+    setInput.classList.remove("input-error");
+    ageInput.classList.remove("input-error");
+
     const name = document.querySelector("#signupUsername")?.value?.trim() ?? "";
     const email = document.querySelector("#signupEmail")?.value?.trim() ?? "";
     const password = document.querySelector("#signupPassword")?.value ?? "";
     const confirmPassword =
       document.querySelector("#signupConfirmPassword")?.value ?? "";
+    const userSet = document.querySelector("#signupSet")?.value?.trim() ?? "";
+    const userAge = parseInt(document.querySelector("#signupAge")?.value ?? "");
 
     // basic field validation
     if (!name || !email || !password || !confirmPassword) {
@@ -111,9 +124,28 @@ function initAuthUI() {
       return;
     }
 
+    // Validate Set (must be A–D)
+    if (!/^[a-d]$/i.test(userSet)) {
+      document.getElementById("setError").textContent =
+        "Set must be a letter between A and D.";
+      setInput.classList.add("input-error");
+      return;
+    }
+
+    // Validate Age (17–100)
+    if (isNaN(userAge) || userAge < 17 || userAge > 100) {
+      document.getElementById("ageError").textContent =
+        "Age must be between 17 and 100.";
+      ageInput.classList.add("input-error");
+      return;
+    }
     setSubmitDisabled(signupForm, true);
     try {
-      await signupUser(name, email, password);
+      await signupUser(name, email, password, {
+        set: `Set ${userSet.toUpperCase()}`,
+        age: userAge,
+      });
+
       location.href = redirectUrl;
     } catch (err) {
       showError(authErrorMessage(err));
