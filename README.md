@@ -2,7 +2,9 @@
 
 
 ## Overview
-Campus Companions is a client-side JavaScript web application that helps users explore the BCIT campus and helps track assignments via your set. The app displays an interactable map of campus where you can click to view specific buildings and their floor plans, as well as a tab where you add, edit, or delete assignments, and a schedule tab that functions similarly. Users can edit their profile to change their username and display name, as well as assign a set for their account to make use of the assignment feature.
+Campus Companions is a client-side JavaScript web application that helps users explore the BCIT campus and helps track assignments via your set. The app displays an interactable map of campus where you can click to view specific buildings and their floor plans, as well as a tab where you add, edit, or delete assignments,and even mark them as "done". The assignments are shared throughout your set, but marking it as complete is something that only appears for the logged in user. The schedule tab is similar, just hard coded classes into the database that are loaded in. 
+
+Users can edit their profile to change their username and display name, as well as adjust their set to make use of the assignment feature. The map page allows you to view custom drawn floor plans of each building on campus to better navigate once you're inside a building.
 
 Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing set assignments for users.
 
@@ -27,18 +29,20 @@ Example:
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
+- **Authentication**: Firebase Authentication
+- **Map**: Mapbox
 
 ---
 
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Log in or create an account. 
+1. Open your browser and visit `REPLACE WITH HOSTED LINK`.
+2. Log in or create an account with your set.
 3. Navigate campus and its buildings via the main Map tab.
-4. Open the profile page to edit your username and set a display name or assign your profile a set.
-5. View and add/edit assignments that are shared throughout your set.
-6. Recieve notifications when an assignment is close to a due date.
+4. View and add/edit assignments that are shared throughout your set and mark them as done for yourself.
+5. Check your class schedule in the schedule tab.
+6. Edit your profile picture, add a display name, or correct any username/set typos.
 
 ---
 
@@ -47,33 +51,61 @@ Example:
 
 ```
 1800_202530_BBY28/
+├── images/...
+├── node_modules/...
 ├── src/
+│   ├── components/
+|       ├── site-footer.js
+|       ├── site-navbar.js
+|   ├── styles/
+│       ├── style.css
+│   ├── app.js
+│   ├── assignment.js
+│   ├── authentication.js
+│   ├── firebaseConfig.js
+│   ├── floorPlan.js
+│   ├── loginSignup.js
 │   ├── main.js
-├── styles/
-│   └── style.css
-├── public/
-├── images/
+│   ├── profile.js
+│   ├── schedule.js
+├── .env
+├── .gitignore
+├── assignments.html
+├── floorPlaceholder.html
 ├── index.html
+├── login.html
+├── main.html
+├── NE.html
+├── NW.html
+├── package-lock.json
 ├── package.json
+├── profile.html
 ├── README.md
+├── schedule.html
+├── SE.html
+├── settings.html
+├── skeleton.html
+├── SW.html
 ```
 
 ---
 
 
 ## Contributors
-- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact.
-- **Grace** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: she wears hat.
-- **Anas** BCIT CST Student, nice guy. Fun fact: He's a funny suppor of mine.
+- **Thien Pham** - BCIT CST Student with a passion for gaming and experimental coding. Fun fact: Fun fact is a fun fact but not always a fun fact. the one above all.
+- **Grace Yang** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: She wears a hat.
+- **Anas Shihab** BCIT CST Student, nice guy. Fun fact: He's passionate about history.
 
 ---
 
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
-- Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Icons were taken and edited from Boxicons.
+- Code snippets were adapted from Demo's and Carly's tech tips.
+- Portions of the code were outlined and debugged with ChatGPT.
+- Comments and naming conventions were edited with ChatGPT.
+- Mapbox was used for the navigation in our map tab.
 
 ---
 
@@ -81,14 +113,20 @@ Example:
 ## Limitations and Future Work
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
-- Accessibility features can be further improved.
+- The amount of time we had allocated to coding.
+- Quality of life features can be further improved.
+- Limited knowledge of technology/javascript.
+- Some Firebase features are locked behind a paywall.
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
-- Create a dark mode for better usability in low-light conditions.
+- Implement all the map building layouts.
+- Add password change/forgot password function.
+- Pop-up events on the map.
+- Notifications for when an assignment is near to it's due date.
+- The date on an assignment only turns red when it's closer to the due date.
+- Schedule UX should fit in with the rest of the app design.
+- Schedule should display classes according to which set is signed in.
 
 ---
 
