@@ -63,7 +63,7 @@ const userSet = sets.includes(data.set) ? data.set : "setD";
       const c = docSnap.data();
         const className = docSnap.id;
       html += `
-        <tr>
+        <tr id = "theRow">
           <td>${className || ""}</td>
           <td>${c.start || ""}</td>
           <td>${c.end || ""}</td>
