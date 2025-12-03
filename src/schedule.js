@@ -1,70 +1,62 @@
-
-import { getFirestore, doc, getDoc, collection, getDocs, documentId, DocumentReference } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-
-
-
-
-
-
 
 const db = getFirestore();
 
 /**
  * Loads the user's classes and renders them in a table.
- * @param {string} userId
+ * @param {string} userId  // THIS IS NOW A STRING (uid)
  */
 async function loadSchedule(userId) {
   try {
-    // --- 1. Get the user's schedule document ---
-    const schedRef = doc(db, "schedules", "setA");  //before -> userID, change to set A -> check if set a exists, always runs
-    const schedSnap = await getDoc(schedRef);
+    // --- 1. Get the user document to read their set ---
+    const userRef = doc(db, "users", userId);
+    const userSnap = await getDoc(userRef);
 
-    if (!schedSnap.exists()) {
-      console.error("No schedule document found for this user");
+    if (!userSnap.exists()) {
+      console.error("User document does not exist.");
       return;
     }
 
-    const data = schedSnap.data();
-
-    // --- 2. Determine which set the user is in (setA–setD) ---
-    const sets = ["setA", "setB", "setC", "setD"];
-const userSet = sets.includes(data.set) ? data.set : "setD";
+    const userData = userSnap.data();
+    const userSet = userData.set; // e.g. "setA"
 
     if (!userSet) {
-      console.error("User does not belong to any set (setA–setD).");
+      console.error("User has no assigned set (A–D).");
       return;
     }
 
-   // console.log("User belongs to:", userSet);
-
-    // --- 3. Get the class subcollection for this set ---
-    // Path: schedules/{userId}/{userSet}/class/*
+    // --- 2. Read the schedule for that set ---
     const classCollectionRef = collection(db, "schedules", userSet, "Class");
     const classSnapshots = await getDocs(classCollectionRef);
-   
 
-    // --- 4. Build the HTML table ---
+    // --- 3. Build the HTML table ---
     let html = `
       <table>
-          <tr>
-            <th>Class Name</th>
-            <th>Start</th>
-            <th>End</th>
-            <th>Duration</th>
-            <th>Room</th>
-            <th>Type</th>
-          </tr>
+        <tr>
+          <th>Class Name</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Duration</th>
+          <th>Room</th>
+          <th>Type</th>
+        </tr>
         <tbody>
     `;
 
-    classSnapshots.forEach(docSnap => {
+    classSnapshots.forEach((docSnap) => {
       const c = docSnap.data();
-        const className = docSnap.id;
+      const className = docSnap.id;
+
       html += `
         <tr>
-          <td>${className || ""}</td>
+          <td>${className}</td>
           <td>${c.start || ""}</td>
           <td>${c.end || ""}</td>
           <td>${c.duration || ""}</td>
@@ -74,14 +66,9 @@ const userSet = sets.includes(data.set) ? data.set : "setD";
       `;
     });
 
-    html += `
-        </tbody>
-      </table>
-    `;
+    html += `</tbody></table>`;
 
-    // --- 5. Write to the page ---
     document.getElementById("scheduleTable").innerHTML = html;
-
   } catch (err) {
     console.error("Error loading schedule:", err);
   }
@@ -89,12 +76,8 @@ const userSet = sets.includes(data.set) ? data.set : "setD";
 
 onAuthStateChanged(getAuth(), (user) => {
   if (user) {
-    // user is signed in
-     const userRef = doc(db, "users", user.uid); //get uid
-    loadSchedule(userRef); //user id not id-ing
-
+    loadSchedule(user.uid);
   } else {
-    // user is not signed in
     console.log("No user logged in");
   }
 });
