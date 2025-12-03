@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Skeleton only has the shared footer and navbar so far
--->
-
 <html lang="en">
   <head>
     <title>Campus Companion</title>
@@ -11,14 +7,16 @@ Skeleton only has the shared footer and navbar so far
     <!--Web Components-->
     <script type="module" src="/src/components/site-navbar.js"></script>
     <script type="module" src="/src/components/site-footer.js"></script>
-    <link rel="stylesheet" href="/src/styles/style.css" />
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   </head>
 
   <body class="floorplan-placeholder">
     <!--Navbar-->
     <site-navbar></site-navbar>
 
-    <main>
+    <main id="floorplanContainer">
       <div class="fp-content">
         <div class="map-title">
           <h1>Floor Plan</h1>

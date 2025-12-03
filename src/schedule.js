@@ -5,8 +5,10 @@ import { onAuthStateChanged } from "firebase/auth";
 /* FIXED TIME LABELS FOR TABLES well not fixed fixed if smth is to be added go ahead */
 const TIME_SLOTS = [
   "08:30",
+  "09:30",
   "10:20",
   "10:30",
+  "11:30",
   "12:20",
   "13:30",
   "14:20",
@@ -20,7 +22,7 @@ const TIME_SLOTS = [
 
 const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
-/* Convert "1430" to "14:30" for table display */
+/* Converts time to proper format -> "1430" to "14:30" for table display */
 function formatTime(t) {
   t = t.toString().padStart(4, "0");
 
@@ -77,6 +79,7 @@ function insertClass(day, startRaw, label) {
 
   if (cell) {
     cell.textContent = label;
+    cell.classList.add("classBG");
   } else {
     console.warn("Could not place class:", label, "→", startFormatted);
   }
