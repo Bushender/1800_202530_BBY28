@@ -1,10 +1,9 @@
-//database imports
 import { auth } from "/src/firebaseConfig.js";
 import { db } from "/src/firebaseConfig.js";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-// back button
+// Back button
 const backButton = document.querySelector(".back-btn");
 if (backButton) {
   backButton.addEventListener("click", () => {
@@ -12,18 +11,18 @@ if (backButton) {
   });
 }
 
-// profile picture upload logic
+// -- Profile picture upload logic --
 
 const profilePic = document.querySelector(".profile-pic");
 const profilePicInput = document.getElementById("profile-pic-input");
 
-// an even listener for clicking the profile
+// Profile event listener for clicking the profile
 if (profilePic && profilePicInput) {
   profilePic.addEventListener("click", () => {
     profilePicInput.click();
   });
 
-  // event listener for file input change
+  // Event listener for file input change
   profilePicInput.addEventListener("change", async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -33,10 +32,10 @@ if (profilePic && profilePicInput) {
     reader.onload = function (e) {
       const base64String = e.target.result.split(",")[1];
 
-      // visually show the selected picture
+      // Display the selected image
       displayProfileImage(base64String);
 
-      // save to Firestore
+      // Save image to Firestore
       saveProfileImage(base64String);
     };
 
@@ -57,7 +56,7 @@ async function saveProfileImage(base64String) {
     const userRef = doc(db, "users", user.uid);
     await setDoc(userRef, { profileImage: base64String }, { merge: true });
 
-    //This is here just for trouble shooting do not worry
+    // This is here just for trouble shooting do not worry
     console.log("Profile image saved successfully.");
 
     window.location.reload();
@@ -99,10 +98,10 @@ const inputs = document.querySelectorAll(
   ".account-form input, .account-form select"
 );
 
-// lock inputs
+// Lock inputs
 inputs.forEach((input) => (input.disabled = true));
 
-// enable on edit
+// Enable on edit
 editBtn.addEventListener("click", () => {
   inputs.forEach((input) => {
     input.disabled = false;
@@ -114,7 +113,7 @@ editBtn.addEventListener("click", () => {
   saveBtn.style.display = "inline-flex";
 });
 
-// nav highlight
+// Nav highlight
 navButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     navButtons.forEach((b) => b.classList.remove("active"));
@@ -122,7 +121,7 @@ navButtons.forEach((btn) => {
   });
 });
 
-// save button logic
+// Save button logic
 saveBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const success = await saveUserInfo();
@@ -138,7 +137,7 @@ saveBtn.addEventListener("click", async (event) => {
   editBtn.style.display = "inline-flex";
 });
 
-// populate form from Firestore
+// Populate form from Firestore
 function populateUserInfo() {
   onAuthStateChanged(auth, async (user) => {
     if (user) {

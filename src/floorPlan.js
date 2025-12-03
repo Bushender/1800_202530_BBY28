@@ -1,3 +1,4 @@
+// Detects which button is clicked and directs to that floor
 document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("floor-btn")) return;
 

@@ -1,3 +1,4 @@
+// imports all the boostrap/css for all the html pages who source app.js
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import "./styles/style.css";

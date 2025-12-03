@@ -100,8 +100,8 @@ class SiteNavbar extends HTMLElement {
     const displayNameElement = this.querySelector("#displayName");
 
     onAuthReady(async (user) => {
-      // This is to check for IFFFFF the user is logged in or not and if not it deals
-      // with the un caught uid promise error.
+      // This is to check for if the user is logged in or not and if not
+      // and it deals with the un-caught uid promise error.
       if (!user) {
         console.log("No user logged in — navbar using default icons.");
 
@@ -139,7 +139,7 @@ class SiteNavbar extends HTMLElement {
         displayNameElement.textContent = displayName;
       }
 
-      //This is to load the profile imagage for the profile
+      //This is to load the profile image for the profile page
       const navbarIcon = this.querySelector("#pfpIcon");
       const dropdownIcon = this.querySelector("#dropdownPFP");
 

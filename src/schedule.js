@@ -2,7 +2,7 @@ import { db, auth } from "./firebaseConfig.js";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 
-/* FIXED TIME LABELS FOR TABLES well not fixed fixed if smth is to be added go ahead */
+/* Labels for all the time slots */
 const TIME_SLOTS = [
   "08:30",
   "09:30",
@@ -45,7 +45,7 @@ function buildGrid() {
       <tbody>
   `;
 
-  /*The following section is literal hell of building a table row by row */
+  /*The following section builds each row of the table one by one */
   /* For each time slot, create a row */
   TIME_SLOTS.forEach((label) => {
     html += `

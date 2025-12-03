@@ -24,7 +24,7 @@ onAuthStateChanged(getAuth(), (user) => {
   }
 });
 
-// constants used to load/track all the buttons and append html
+// constants used to load/track all the buttons and append html to the page
 const add = document.getElementById("addButton");
 const assignmentForm = document.getElementById("assignmentForm");
 const create = document.getElementById("createBtn");
@@ -38,16 +38,18 @@ const deleteBtn = document.getElementById("deleteBtn");
 
 let currentAssignmentID = null;
 
+// Cancel buttons for create and edit
 cancel.addEventListener("click", closeForm);
-
 cancelEdit.addEventListener("click", closeForm);
 
+// Delete button in the edit form
 deleteBtn.addEventListener("click", async () => {
   await deleteDoc(doc(db, "assignments", currentAssignmentID));
   loadAssignments(getAuth().currentUser);
   closeForm();
 });
 
+// Toggles the view when an creation or edit form is opened/closed
 function closeForm() {
   assignmentForm.style.display = "none";
   editForm.style.display = "none";
@@ -89,7 +91,7 @@ create.addEventListener("click", async () => {
   loadAssignments(user);
 });
 
-// Toggles whether an assignment is in the done array or not
+// Toggles whether an assignment is in the user's done array or not
 async function toggleDone(id, isChecked) {
   const user = getAuth().currentUser;
   const userRef = doc(db, "users", user.uid);
@@ -191,7 +193,7 @@ async function loadAssignments(user) {
 }
 
 function isValidDate(dateString) {
-  // Must be exactly YYYY-MM-DD yes i used a regex yes we learnt in java what regex are
+  // Must be exactly YYYY-MM-DD, ensured with regex we learned in COMP 1510
   const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (!regex.test(dateString)) return false;
 
@@ -214,7 +216,7 @@ function isValidDate(dateString) {
   );
 }
 
-// menu control (edit, save edit)
+// Menu control (edit, save edit)
 container.addEventListener("click", async (e) => {
   const target = e.target;
   const assignment = target.closest(".assignmentItem");
@@ -234,6 +236,7 @@ container.addEventListener("click", async (e) => {
     const docSnap = await getDoc(docRef);
     const data = docSnap.data();
 
+    // Required work-around to ensure formatting is smooth
     editForm.style.display = "flex";
     overlay.style.display = "block";
 

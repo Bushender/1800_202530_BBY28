@@ -1,3 +1,5 @@
+// The commented code is left here for when we make future improvements
+// They are left as a reminder and for ease when we implement them
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
@@ -8,7 +10,6 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  // DO NOT TOUCH THIS LINE IT'S FOR IMG STORAGE LATER ON
   // storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
 };
 

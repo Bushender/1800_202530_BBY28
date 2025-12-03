@@ -1,8 +1,3 @@
-import { onAuthStateChanged } from "firebase/auth";
-
-// import { auth } from "src/firebaseConfig.js";
-// import { logoutUser } from "src/authentication.js";
-
 class SiteFooter extends HTMLElement {
   constructor() {
     super();

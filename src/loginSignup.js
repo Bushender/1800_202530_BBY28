@@ -93,14 +93,14 @@ function initAuthUI() {
   signupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideError();
-    // Clear previous error messages so that it doesn't just stay on screen :/
+    // Clear previous error messages so that it doesn't just stay on screen
     const setInput = document.getElementById("signupSet");
     const ageInput = document.getElementById("signupAge");
 
     document.getElementById("setError").textContent = "";
     document.getElementById("ageError").textContent = "";
 
-    // Remove previous red borders same thing up there.
+    // Remove previous red borders from an input error
     setInput.classList.remove("input-error");
     ageInput.classList.remove("input-error");
 
@@ -112,13 +112,13 @@ function initAuthUI() {
     const userSet = document.querySelector("#signupSet")?.value?.trim() ?? "";
     const userAge = parseInt(document.querySelector("#signupAge")?.value ?? "");
 
-    // basic field validation
+    // Basic field validation
     if (!name || !email || !password || !confirmPassword) {
       showError("Please fill in all fields.");
       return;
     }
 
-    // password match check
+    // Password match check
     if (password !== confirmPassword) {
       showError("Passwords do not match.");
       return;
