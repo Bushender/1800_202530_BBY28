@@ -32,72 +32,6 @@ function formatTime(t) {
   return `${h}:${m}`;
 }
 
-<<<<<<< HEAD
-
-
-
-const db = getFirestore();
-
-/**
- * Loads the user's classes and renders them in a table.
- * @param {string} userId
- */
-async function loadSchedule(userId) {
-  try {
-    // --- 1. Get the user's schedule document ---
-    const schedRef = doc(db, "schedules", "setA");  //before -> userID, change to set A -> check if set a exists, always runs
-    const schedSnap = await getDoc(schedRef);
-
-    if (!schedSnap.exists()) {
-      console.error("No schedule document found for this user");
-      return;
-    }
-
-    const data = schedSnap.data();
-
-    // --- 2. Determine which set the user is in (setA–setD) ---
-    const sets = ["setA", "setB", "setC", "setD"];
-const userSet = sets.includes(data.set) ? data.set : "setD";
-
-    if (!userSet) {
-      console.error("User does not belong to any set (setA–setD).");
-      return;
-    }
-
-   // console.log("User belongs to:", userSet);
-
-    // --- 3. Get the class subcollection for this set ---
-    // Path: schedules/{userId}/{userSet}/class/*
-    const classCollectionRef = collection(db, "schedules", userSet, "Class");
-    const classSnapshots = await getDocs(classCollectionRef);
-   
-
-    // --- 4. Build the HTML table ---
-    let html = `
-      <table>
-          <tr>
-            <th>Class Name</th>
-            <th>Start</th>
-            <th>End</th>
-            <th>Duration</th>
-            <th>Room</th>
-            <th>Type</th>
-          </tr>
-        <tbody>
-    `;
-
-    classSnapshots.forEach(docSnap => {
-      const c = docSnap.data();
-        const className = docSnap.id;
-      html += `
-        <tr id = "theRow">
-          <td>${className || ""}</td>
-          <td>${c.start || ""}</td>
-          <td>${c.end || ""}</td>
-          <td>${c.duration || ""}</td>
-          <td>${c.room || ""}</td>
-          <td>${c.type || ""}</td>
-=======
 /* Build table */
 function buildGrid() {
   let html = `
@@ -106,7 +40,6 @@ function buildGrid() {
         <tr>
           <th>Time</th>
           ${DAYS.map((d) => `<th>${d}</th>`).join("")}
->>>>>>> main
         </tr>
       </thead>
       <tbody>
