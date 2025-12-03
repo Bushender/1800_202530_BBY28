@@ -117,12 +117,12 @@ function renderAssignment(id, data, isDone = false) {
     </div>
 
     <div class="assignmentBox">
-      <div class="top">${data.className}
+      <div class="top">${data.name}
         <button class="editBtn">
           <img src="images/edit_icon.png" alt="menu" class="edit">
         </button>
       </div>
-      <div class="bottom">${data.name}
+      <div class="bottom">${data.className}
       <span class="dueDate">${data.dueDate}</span>
       </div>
     </div>
@@ -157,6 +157,8 @@ async function loadAssignments(user) {
   let doneAssignments = [];
   let notDoneAssignments = [];
 
+  // Check if the assignemnt is marked as "done" for the user
+  // and add it to the corresponding array
   setAssignments.forEach((assignment) => {
     if (done.includes(assignment.id)) {
       doneAssignments.push(assignment);
@@ -168,6 +170,9 @@ async function loadAssignments(user) {
   const container = document.getElementById("assignmentContainer");
   container.innerHTML = "";
 
+  // Checks if any assignments even exist
+  // If not, load html saying there aren't any
+  // If yes, then load the uncomplete assignments first
   if (doneAssignments.length == 0 && notDoneAssignments.length == 0) {
     container.innerHTML = `
     <div id="noneBox">

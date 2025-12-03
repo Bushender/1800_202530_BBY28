@@ -9,7 +9,7 @@ nav {
   height: 11vh;
 }
 
-/* Map stuff lols */
+/* Map Styling*/
 /* The map container must be relative so the instructions position correctly */
 #map-container {
   position: relative;
@@ -74,7 +74,7 @@ nav {
   width: 15%;
   border-radius: 8px;
   padding: 10px 20px;
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -82,8 +82,6 @@ nav {
   background-color: rgb(82, 107, 163);
   color: white;
 }
-
-/*SW STYLE STUFF DON'T TOUCH PLS*/
 
 /* Only for the SW page */
 .sw-floor-selector {
@@ -109,10 +107,7 @@ nav {
   border: none;
 }
 
-/* End SW STYLE STUFF DON'T TOUCH PLS*/
-
-/* SE STYLE STUFF DON'T TOUCH PLS*/
-
+/* Only for the SE page */
 .se-page .se-floor-selector {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -138,10 +133,7 @@ nav {
   cursor: pointer;
 }
 
-/* End SE STYLE STUFF DON'T TOUCH PLS*/
-
-/*NW STYLE STUFF DON'T TOUCH PLS*/
-
+/* Only for the NW page */
 .nw-page .nw-floor-selector {
   position: static;
   background-color: transparent;
@@ -165,10 +157,7 @@ nav {
   border: none;
 }
 
-/* End NW STYLE STUFF DON'T TOUCH PLS*/
-
-/*NE STYLE STUFF DON'T TOUCH PLS*/
-
+/* Only for the NE page */
 .ne-page main {
   padding-bottom: 60vh;
 }
@@ -198,10 +187,7 @@ nav {
   cursor: pointer;
 }
 
-/*NE STYLE STUFF DON'T TOUCH PLS*/
-
-/*FLOOR PLAN STYLES DON'T TOUCH PLS*/
-
+/* Floorplan Page */
 .floorplan-page {
   min-height: 100vh;
   display: flex;
@@ -244,11 +230,14 @@ nav {
   max-width: 700px;
   height: auto;
   margin-bottom: 2rem;
+  margin-top: 10vw;
 }
 
-/*SEPERATE MAP FROM OTHER STUFF*/
-
 /* Login/Signup, landing page, dropdown menus */
+
+.dropdown {
+  margin-right: 20px;
+}
 
 .dropdown-menu {
   background-color: rgb(198, 204, 211);
@@ -271,9 +260,9 @@ nav {
 }
 
 #pfpIcon {
-  width: 8vh;
+  width: 7vh;
   object-fit: cover;
-  height: 8vh;
+  height: 7vh;
   border-radius: 50%;
 }
 
@@ -418,8 +407,7 @@ nav {
   border: 2px solid red;
 }
 
-/*profile page css*/
-
+/* Profile Page */
 body {
   font-family: Arial, sans-serif;
 }
@@ -622,9 +610,7 @@ select:focus {
   background-color: white;
 }
 
-/* Seperate from others this is still profile page css */
-
-/* Assignment css */
+/* Assignment Page */
 #overlay {
   display: none;
   position: fixed;
@@ -835,24 +821,24 @@ select:focus {
   color: white;
 }
 
-/* Change background color for completed assignments box itself*/
+/* Change background color for completed assignments box */
 .assignment-done .assignmentBox {
   background-color: rgb(109, 109, 127);
 }
 
-/* Change background color for completed assignments edit button*/
+/* Change background color for completed assignments edit button */
 .assignmentItem.assignment-done .editBtn {
   background-color: rgb(109, 109, 127);
 }
 
-/* Change text color for completed assignments everything else*/
+/* Change text color for completed assignments everything else */
 .assignmentItem.assignment-done .top,
 .assignmentItem.assignment-done .bottom,
 .assignmentItem.assignment-done .dueDate {
   color: #2c2c2c;
 }
 
-/* if assignments don't exist now*/
+/* If Assignment Page is Empty */
 
 #noneBox {
   display: flex;
@@ -868,9 +854,7 @@ select:focus {
   color: gray;
 }
 
-/* Schedule Tab */
-
-/* Schedule Table Base */
+/* Schedule Page */
 #scheduleGrid {
   width: 100%;
   border-collapse: collapse;
@@ -880,12 +864,19 @@ select:focus {
 
 #scheduleGrid th,
 #scheduleGrid td {
-  border: 5px solid #0a2a3d;
+  border: 5px solid #161e4e;
   height: 5vh;
-  background: white;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
   padding: 0;
+}
+
+#scheduleGrid th {
+  color: white;
+  background-color: rgb(32, 57, 116);
+  font-size: 2.5em;
+  height: 4vh;
 }
 
 #schedule {
@@ -894,6 +885,24 @@ select:focus {
   text-align: center;
   padding: 15px 0;
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: bold;
+}
+
+.classBG {
+  background-color: #9498c2; /* light orange */
+}
+
+/* Settings Page */
+#settings {
+  display: flex;
+  justify-content: center;
+  margin-top: 30vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+#settingsTitle {
+  font-size: 5em;
+  text-align: center;
 }

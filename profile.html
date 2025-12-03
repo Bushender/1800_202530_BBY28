@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<!--
-Skeleton only has the shared footer and navbar so far
--->
-
 <html lang="en">
   <head>
     <title>Campus Companion</title>
     <meta charset="utf-8" />
-    <script type="module" src="/src/profile.js"></script>
+
     <!--Web Components-->
     <link rel="stylesheet" href="/src/styles/style.css" />
     <script type="module" src="/src/components/site-footer.js"></script>
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
     <style>
       html {
@@ -21,7 +20,6 @@ Skeleton only has the shared footer and navbar so far
 
   <body>
     <!--Navbar-->
-    <!-- <site-navbar></site-navbar> -->
 
     <!-- Main stuff -->
     <button class="back-btn">&lt; Back</button>
@@ -103,9 +101,11 @@ Skeleton only has the shared footer and navbar so far
         </form>
       </section>
     </div>
+
     <!--Footer-->
     <site-footer></site-footer>
 
     <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/profile.js"></script>
   </body>
 </html>
