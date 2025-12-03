@@ -235,6 +235,10 @@ nav {
 
 /* Login/Signup, landing page, dropdown menus */
 
+#landingContainer {
+  margin-top: 7vh;
+}
+
 .dropdown {
   margin-right: 20px;
 }
