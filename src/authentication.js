@@ -1,8 +1,7 @@
 // code "borrowed" from demo07
 
+// Imports lines
 import { auth } from "/src/firebaseConfig.js";
-
-// Import specific functions from the Firebase Auth SDK
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -14,39 +13,16 @@ import {
 import { db } from "/src/firebaseConfig.js";
 import { doc, setDoc } from "firebase/firestore";
 
-// -------------------------------------------------------------
-// loginUser(email, password)
-// -------------------------------------------------------------
-// Logs an existing user into Firebase Authentication.
-//
-// Parameters:
-//   email (string)    - user's email
-//   password (string) - user's password
-//
-// Returns: Promise resolving to the user credential object.
-// Usage:
-//   await loginUser("user@example.com", "password123");
-// -------------------------------------------------------------
+// --- Login User ---
+// Signs in an existing user with email + password.
+// Returns the user credential object.
 export async function loginUser(email, password) {
   return signInWithEmailAndPassword(auth, email, password);
 }
 
-// -------------------------------------------------------------
-// signupUser(name, email, password)
-// -------------------------------------------------------------
-// Creates a new user account with Firebase Authentication,
-// then updates the user's profile with a display name.
-//
-// Parameters:
-//   name (string)     - user's display name
-//   email (string)    - user's email
-//   password (string) - user's password
-//
-// Returns: the created user object.
-// Usage:
-//   const user = await signupUser("Alice", "alice@email.com", "secret");
-// -------------------------------------------------------------
-
+// --- Signup User ---
+// Creates a new Firebase Auth account, updates display name,
+// and stores extra user details in Firestore.
 export async function signupUser(name, email, password, extraData) {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
@@ -55,7 +31,7 @@ export async function signupUser(name, email, password, extraData) {
   );
   const user = userCredential.user;
 
-  // Update Firebase Auth display name
+  // Update the display name
   await updateProfile(user, { displayName: name });
 
   try {
@@ -76,35 +52,17 @@ export async function signupUser(name, email, password, extraData) {
   return user;
 }
 
-// -------------------------------------------------------------
-// logoutUser()
-// -------------------------------------------------------------
-// Signs out the currently logged-in user and redirects them
-// back to the login page (index.html).
-//
-// Usage:
-//   await logoutUser();
-// -------------------------------------------------------------
+// --- Logout User ---
+// Signs out the user and returns them to the login page.
 export async function logoutUser() {
   await signOut(auth);
   window.location.href = "index.html";
 }
 
-// -------------------------------------------------------------
-// checkAuthState()
-// -------------------------------------------------------------
-// Observes changes in the user's authentication state (login/logout)
-// and updates the UI or redirects accordingly.
-//
-// If the user is on "main.html":
-//   - If logged in → displays "Hello, [Name]!"
-//   - If not logged in → redirects to "index.html"
-//
-// This function should be called once when the page loads.
-//
-// Usage:
-//   checkAuthState();
-// -------------------------------------------------------------
+// --- Auth State Check ---
+// Listens for login or logout changes on main.html:
+// If logged in then display greeting
+// If logged out then redirect to login
 export function checkAuthState() {
   onAuthStateChanged(auth, (user) => {
     if (window.location.pathname.endsWith("main.html")) {
@@ -118,21 +76,15 @@ export function checkAuthState() {
   });
 }
 
-// -------------------------------------------------------------
-// onAuthReady(callback)
-// -------------------------------------------------------------
-// Wrapper for Firebase's onAuthStateChanged()
-// Runs the given callback(user) when Firebase resolves or changes auth state.
-// Useful for showing user info or redirecting after login/logout.
+// --- onAuthReady ---
+// Runs callback when Firebase auth state becomes available.
+// Useful for pages that depend on logged-in user data.
 export function onAuthReady(callback) {
   return onAuthStateChanged(auth, callback);
 }
 
-// -------------------------------------------------------------
-// authErrorMessage(error)
-// -------------------------------------------------------------
-// Maps Firebase Auth error codes to short, user-friendly messages.
-// Helps display clean error alerts instead of raw Firebase codes.
+// --- Auth Error Messages ---
+// Basically just makes error message into a more readable format
 export function authErrorMessage(error) {
   const code = (error?.code || "").toLowerCase();
 

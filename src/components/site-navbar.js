@@ -2,12 +2,14 @@ import { logoutUser, onAuthReady } from "../authentication.js";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig.js";
 
+// SiteNavbar Web Component
 class SiteNavbar extends HTMLElement {
   constructor() {
     super();
     this.renderNavbar();
   }
 
+  //the html for navbar
   renderNavbar() {
     this.innerHTML = `
       <header>
