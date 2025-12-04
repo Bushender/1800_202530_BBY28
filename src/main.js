@@ -32,8 +32,6 @@ async function showMap() {
     getRoute(map, userLocation, clickedLocation);
   });
 
-  // Add controls like zoom and rotate so the user doesn't scream at the screen
-
   addControls();
 
   function addControls() {
@@ -110,7 +108,7 @@ async function getUserLocation() {
 
   const defaultLocation = [-123.00163752324765, 49.25324576104826];
 
-  // If the browser doesn’t support geolocation, cry and return default
+  // If the browser doesn’t support geolocation cry and return default
   if (!navigator.geolocation) {
     console.log("Geolocation not supported. Using default.");
     return defaultLocation;
