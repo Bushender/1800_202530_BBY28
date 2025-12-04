@@ -3,12 +3,14 @@ import { onAuthStateChanged } from "firebase/auth";
 // import { auth } from "src/firebaseConfig.js";
 // import { logoutUser } from "src/authentication.js";
 
+// SiteFooter Web Component
 class SiteFooter extends HTMLElement {
   constructor() {
     super();
     this.renderFooter();
   }
 
+  //the html for footer
   renderFooter() {
     this.innerHTML = `
       <footer class="footer">

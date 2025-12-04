@@ -124,7 +124,7 @@ function initAuthUI() {
       return;
     }
 
-    // Validate Set (must be A–D)
+    // Validate Set (A–D)
     if (!/^[a-d]$/i.test(userSet)) {
       document.getElementById("setError").textContent =
         "Set must be a letter between A and D.";
