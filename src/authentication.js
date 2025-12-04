@@ -31,7 +31,6 @@ export async function signupUser(name, email, password, extraData) {
   );
   const user = userCredential.user;
 
-  // Update the display name
   await updateProfile(user, { displayName: name });
 
   try {
