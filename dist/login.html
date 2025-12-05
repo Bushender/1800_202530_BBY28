@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Campus Companion</title>
+    <meta charset="utf-8" />
+
+    <!--Web Components-->
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <script type="module" crossorigin src="/assets/login-C9oX0HtM.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/app-dDW-M8-3.js">
+    <link rel="modulepreload" crossorigin href="/assets/site-navbar-DWh6iYwt.js">
+    <link rel="stylesheet" crossorigin href="/assets/app-FVzwD3ou.css">
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <site-navbar></site-navbar>
+
+    <!-- Login Form -->
+    <!--Welcome-->
+    <div id="loginWelcome" class="d-flex align-items-center flex-column">
+      <div class="w-75 divColour">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold welcomeText">
+              Welcome back!
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loginView">
+      <div id="authAlert" class="alert alert-danger d-none" role="alert"></div>
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="divColour w-75 pt-4 formSize">
+          <h3 class="mb-3 text-center formTitle">Log in</h3>
+          <form
+            id="loginForm"
+            novalidate
+            class="d-flex align-items-center flex-column"
+          >
+            <!-- Email Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="email"
+                id="loginEmail"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <!-- Password Input & Forgot Password -->
+            <div class="mb-3 w-auto position-relative">
+              <input
+                type="password"
+                id="loginPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+
+              <span class="position-absolute" style="right: 0">
+                <a href="#" id="forgotPassword">Forgot password?</a></span
+              >
+            </div>
+
+            <div
+              class="d-flex justify-content-between align-items-center mt-3 w-75 ms-2 buttonPos"
+            >
+              <!-- Signup Link -->
+              <span>
+                <a href="#" id="toSignup" class="ms-2">Sign up</a>
+              </span>
+
+              <!-- Login Button -->
+              <button id="loginButton" type="submit" class="btn me-2">
+                Log in
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signup Form -->
+    <!--Welcome-->
+    <div
+      id="signupWelcome"
+      class="d-flex align-items-center flex-column d-none"
+    >
+      <div class="w-75 divColour formSize">
+        <div class="d-flex align-items-center flex-column">
+          <div class="jumbotron w-auto">
+            <h1 class="display-4 mt-4 mb-4 fw-bold welcomeText">Welcome!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="signupView" class="d-none">
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="divColour w-75 pt-4">
+          <h3 class="mb-3 text-center formTitle">Sign Up</h3>
+          <form
+            id="signupForm"
+            novalidate
+            class="d-flex align-items-center flex-column"
+          >
+            <!--Username Input-->
+            <div class="mb-3 w-auto">
+              <input
+                type="text"
+                id="signupUsername"
+                class="form-control"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <!-- Email Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="email"
+                id="signupEmail"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <!-- Password Input -->
+            <div class="mb-3 w-auto">
+              <input
+                type="password"
+                id="signupPassword"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <!-- Password Confirmation -->
+            <div class="w-auto">
+              <input
+                type="password"
+                id="signupConfirmPassword"
+                class="form-control"
+                placeholder="Confirm Password"
+                required
+              />
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mb-3 w-auto">
+              <input
+                type="text"
+                id="signupSet"
+                class="form-control"
+                placeholder="Set (A–D)"
+                required
+              />
+
+              <input
+                type="number"
+                id="signupAge"
+                class="form-control"
+                placeholder="Age"
+                required
+              />
+            </div>
+
+            <!-- red line that appear if you do something stupid -->
+            <p
+              id="setError"
+              class="text-danger mt-1"
+              style="font-size: 1.4vh"
+            ></p>
+            <p
+              id="ageError"
+              class="text-danger mt-1"
+              style="font-size: 1.4vh"
+            ></p>
+
+            <div
+              class="d-flex justify-content-between align-items-center w-75 buttonPos"
+            >
+              <!-- Signup Link -->
+              <span>
+                <a href="#" id="toLogin" class="ms-1">Log in</a>
+              </span>
+
+              <!-- Login Button -->
+              <button id="signupButton" type="submit" class="btn me-2">
+                Sign up
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <site-footer></site-footer>
+
+
+    <!--Authentication Scripts (ORDER MATTERS)-->
+  </body>
+</html>

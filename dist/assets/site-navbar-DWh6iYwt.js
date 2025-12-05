@@ -1,17 +1,4 @@
-import { logoutUser, onAuthReady } from "../authentication.js";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig.js";
-
-// SiteNavbar Web Component
-class SiteNavbar extends HTMLElement {
-  constructor() {
-    super();
-    this.renderNavbar();
-  }
-
-  //the html for navbar
-  renderNavbar() {
-    this.innerHTML = `
+import{p as u,r as m,d as g,c as b,g as f}from"./app-dDW-M8-3.js";class w extends HTMLElement{constructor(){super(),this.renderNavbar()}renderNavbar(){this.innerHTML=`
       <header>
         <nav class="navbar">
           <img
@@ -84,73 +71,4 @@ class SiteNavbar extends HTMLElement {
           </div>
         </nav>
       </header>
-    `;
-
-    // Wire up logout button
-    const logoutBtn = this.querySelector("#logoutBtn");
-    logoutBtn?.addEventListener("click", async () => {
-      try {
-        await logoutUser();
-        console.log("User logged out successfully.");
-        window.location.href = "login.html";
-      } catch (err) {
-        console.error("Logout failed:", err);
-      }
-    });
-
-    const nameElement = this.querySelector("#username");
-    const displayNameElement = this.querySelector("#displayName");
-
-    onAuthReady(async (user) => {
-      // This is to check for IFFFFF the user is logged in or not and if not it deals
-      // with the un caught uid promise error.
-      if (!user) {
-        const navbarIcon = this.querySelector("#pfpIcon");
-        const dropdownIcon = this.querySelector("#dropdownPFP");
-
-        if (navbarIcon) navbarIcon.src = "images/user_icon.png";
-        if (dropdownIcon) dropdownIcon.src = "images/user_icon.png";
-
-        if (nameElement) nameElement.textContent = "";
-        if (displayNameElement) displayNameElement.textContent = "Guest";
-
-        return;
-      }
-
-      const userRef = doc(db, "users", user.uid);
-      const userDoc = await getDoc(userRef);
-
-      let name = "Username";
-      let displayName = "Display Name";
-      let profileImage = null;
-
-      if (userDoc.exists()) {
-        const data = userDoc.data();
-        name = data.name || name;
-        displayName = data.displayName || displayName;
-        profileImage = data.profileImage || null;
-      }
-
-      // Update text labels
-      if (nameElement) {
-        nameElement.textContent = name;
-      }
-      if (displayNameElement) {
-        displayNameElement.textContent = displayName;
-      }
-
-      //This is to load the profile imagage for the profile
-      const navbarIcon = this.querySelector("#pfpIcon");
-      const dropdownIcon = this.querySelector("#dropdownPFP");
-
-      if (profileImage) {
-        const imgSrc = `data:image/png;base64,${profileImage}`;
-
-        if (navbarIcon) navbarIcon.src = imgSrc;
-        if (dropdownIcon) dropdownIcon.src = imgSrc;
-      }
-    });
-  }
-}
-
-customElements.define("site-navbar", SiteNavbar);
+    `,this.querySelector("#logoutBtn")?.addEventListener("click",async()=>{try{await u(),console.log("User logged out successfully."),window.location.href="login.html"}catch(n){console.error("Logout failed:",n)}});const o=this.querySelector("#username"),e=this.querySelector("#displayName");m(async n=>{if(!n){const t=this.querySelector("#pfpIcon"),c=this.querySelector("#dropdownPFP");t&&(t.src="images/user_icon.png"),c&&(c.src="images/user_icon.png"),o&&(o.textContent=""),e&&(e.textContent="Guest");return}const p=g(b,"users",n.uid),l=await f(p);let s="Username",i="Display Name",a=null;if(l.exists()){const t=l.data();s=t.name||s,i=t.displayName||i,a=t.profileImage||null}o&&(o.textContent=s),e&&(e.textContent=i);const r=this.querySelector("#pfpIcon"),d=this.querySelector("#dropdownPFP");if(a){const t=`data:image/png;base64,${a}`;r&&(r.src=t),d&&(d.src=t)}})}}customElements.define("site-navbar",w);
