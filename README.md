@@ -29,7 +29,7 @@ Example:
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
-- **CSS Framework Components**: Bootstrap (https://getbootstrap.com/)
+- **CSS Framework Components**: [Bootstrap](https://getbootstrap.com/)
 - **Authentication**: Firebase Authentication
 - **Map**: Mapbox
 
@@ -99,8 +99,8 @@ Example:
 
 ## Acknowledgments
 
-- Icons were taken and edited from Boxicons.
-- The Favicon.ico was formatted with (https://favicon.io/)
+- Icons were taken and edited from [Boxicons](https://boxicons.com/).
+- The favicon was sourced on [favicon.io](https://favicon.io/).
 - Code snippets were adapted from the COMP 1800 demos and Carly's tech tips.
 - Portions of the code were outlined and debugged with ChatGPT.
 - Comments and naming conventions were edited with ChatGPT.

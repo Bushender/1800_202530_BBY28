@@ -2,12 +2,14 @@ import { logoutUser, onAuthReady } from "../authentication.js";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig.js";
 
+// SiteNavbar Web Component
 class SiteNavbar extends HTMLElement {
   constructor() {
     super();
     this.renderNavbar();
   }
 
+  //the html for navbar
   renderNavbar() {
     this.innerHTML = `
       <header>
@@ -103,8 +105,6 @@ class SiteNavbar extends HTMLElement {
       // This is to check for if the user is logged in or not and if not
       // and it deals with the un-caught uid promise error.
       if (!user) {
-        console.log("No user logged in — navbar using default icons.");
-
         const navbarIcon = this.querySelector("#pfpIcon");
         const dropdownIcon = this.querySelector("#dropdownPFP");
 

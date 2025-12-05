@@ -4,6 +4,7 @@ class SiteFooter extends HTMLElement {
     this.renderFooter();
   }
 
+  //the html for footer
   renderFooter() {
     this.innerHTML = `
       <footer class="footer">

@@ -29,7 +29,7 @@ function initAuthUI() {
     alertEl.textContent = msg || "";
     alertEl.classList.remove("d-none");
     clearTimeout(errorTimeout);
-    errorTimeout = setTimeout(hideError, 5000); // Auto-hide after 5s
+    errorTimeout = setTimeout(hideError, 5000);
   }
 
   // Hide error message
@@ -124,7 +124,7 @@ function initAuthUI() {
       return;
     }
 
-    // Validate Set (must be A–D)
+    // Validate Set (A–D)
     if (!/^[a-d]$/i.test(userSet)) {
       document.getElementById("setError").textContent =
         "Set must be a letter between A and D.";

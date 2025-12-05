@@ -43,7 +43,7 @@ if (profilePic && profilePicInput) {
   });
 }
 
-// Save Base64 string to Firestore
+// Save Base64 string to Firestore funfact big note if image too big the whole code explode
 async function saveProfileImage(base64String) {
   const user = auth.currentUser;
 
@@ -56,12 +56,8 @@ async function saveProfileImage(base64String) {
     const userRef = doc(db, "users", user.uid);
     await setDoc(userRef, { profileImage: base64String }, { merge: true });
 
-    // This is here just for trouble shooting do not worry
-    console.log("Profile image saved successfully.");
-
     window.location.reload();
   } catch (error) {
-    //same with this.
     console.error("Error saving profile image:", error);
   }
 }
