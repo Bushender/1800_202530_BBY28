@@ -8,11 +8,9 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  // DO NOT TOUCH THIS LINE IT'S FOR IMG STORAGE LATER ON
+  // ok so like since we like don't need bucket right now BUT might use it in future
   // storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
 };
-
-console.log("Firebase config:", firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 

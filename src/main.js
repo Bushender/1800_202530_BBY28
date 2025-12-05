@@ -17,7 +17,7 @@ async function showMap() {
   // Attempt to get user's real location or default if not available
 
   const userLocation = await getUserLocation();
-  console.log("User location: " + userLocation);
+
   const map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/streets-v12",
@@ -97,7 +97,7 @@ function getClickedLocation(map, callback) {
         },
       });
     }
-    console.log(clickedLocation);
+
     callback(clickedLocation);
   });
 }
@@ -117,7 +117,6 @@ async function getUserLocation() {
       // So if it work then user location is retrieved
       (pos) => {
         const coords = [pos.coords.longitude, pos.coords.latitude];
-        console.log("User location:", coords);
 
         resolve(coords);
       },
@@ -144,7 +143,6 @@ async function getRoute(map, start, end) {
   const json = await query.json();
   const data = json.routes[0];
   const route = data.geometry.coordinates;
-  console.log("route is " + route);
   const geojson = {
     type: "Feature",
     properties: {},
