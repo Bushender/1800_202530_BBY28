@@ -190,9 +190,8 @@ async function loadAssignments(user) {
   }
 }
 
-//Validates date input in YYYY-MM-DD format
+//Validates date input in YYYY-MM-DD format using a regex
 function isValidDate(dateString) {
-  // Must be exactly YYYY-MM-DD yes i used a regex yes we learnt in java what regex are
   const regex = /^\d{4}-\d{2}-\d{2}$/;
   if (!regex.test(dateString)) return false;
 
