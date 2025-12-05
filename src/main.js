@@ -14,7 +14,7 @@ async function showMap() {
 
   mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-  // Attempt to get user's real location or default if our gps or our app hates us
+  // Attempt to get user's real location or default if not available
 
   const userLocation = await getUserLocation();
   console.log("User location: " + userLocation);
@@ -104,11 +104,8 @@ function getClickedLocation(map, callback) {
 
 // Gets the user's location using the Geolocation API
 async function getUserLocation() {
-  // Default location in case everything explodes or the user blocks GPS
-
   const defaultLocation = [-123.00163752324765, 49.25324576104826];
 
-  // If the browser doesn’t support geolocation cry and return default
   if (!navigator.geolocation) {
     console.log("Geolocation not supported. Using default.");
     return defaultLocation;
@@ -125,7 +122,6 @@ async function getUserLocation() {
         resolve(coords);
       },
 
-      // IF permission denied or GPS died then use default location
       () => {
         console.log("Geolocation failed. Using default.");
 
@@ -159,7 +155,6 @@ async function getRoute(map, start, end) {
   };
   // If the route already exists update it.
   // If not add a new layer to draw the path on the map.
-  // Thing is that the else literally would only work once it's not really that complicated.
 
   if (map.getSource("route")) {
     map.getSource("route").setData(geojson);
