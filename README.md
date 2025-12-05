@@ -37,7 +37,7 @@ Example:
 
 ## Usage
 
-1. Open your browser and visit `REPLACE WITH HOSTED LINK`.
+1. Open your browser and visit `https://bby28-758e7.web.app/`.
 2. Log in or create an account with your set.
 3. Navigate campus and its buildings via the main Map tab.
 4. View and add/edit assignments that are shared throughout your set and mark them as done for yourself.
@@ -50,8 +50,29 @@ Example:
 
 ```
 1800_202530_BBY28/
-├── images/...
+├── .firebase/
+│   ├── hosting.ZGlzdA.cache
+├── .git/...
+├── .vscode/...
+├── dist/
+│   ├── assets/...
+│   ├── images/...
+│   ├── assignments.html
+│   ├── floorPlaceholder.html
+│   ├── index.html
+│   ├── login.html
+│   ├── main.html
+│   ├── NE.html
+│   ├── NW.html
+│   ├── profile.html
+│   ├── schedule.html
+│   ├── SE.html
+│   ├── settings.html
+│   ├── skeleton.html
+│   ├── SW.html
 ├── node_modules/...
+├── public
+│   ├── images/...
 ├── src/
 │   ├── components/
 |   |  ├── site-footer.js
@@ -68,8 +89,12 @@ Example:
 │   ├── profile.js
 │   ├── schedule.js
 ├── .env
+├── .firebaserc
 ├── .gitignore
 ├── assignments.html
+├── firebase.json
+├── firebase.indexes.json
+├── firebase.rules
 ├── floorPlaceholder.html
 ├── index.html
 ├── login.html
@@ -85,6 +110,7 @@ Example:
 ├── settings.html
 ├── skeleton.html
 ├── SW.html
+├── vite.config.js
 ```
 
 ---
@@ -131,4 +157,4 @@ Example:
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+Please reach out if you'd like to use our project in your own development.
