@@ -1,4 +1,4 @@
-// Navigate to floor placeholder on floor button click yeah that's all here lol
+// Navigate to floor placeholder on floor button click
 document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("floor-btn")) return;
 

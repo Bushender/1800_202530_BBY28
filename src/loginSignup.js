@@ -93,7 +93,7 @@ function initAuthUI() {
   signupForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
     hideError();
-    // Clear previous error messages so that it doesn't just stay on screen :/
+    // Clear previous error messages so that it doesn't just stay on screen
     const setInput = document.getElementById("signupSet");
     const ageInput = document.getElementById("signupAge");
 
